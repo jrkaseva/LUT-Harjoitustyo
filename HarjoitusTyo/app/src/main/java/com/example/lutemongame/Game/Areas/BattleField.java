@@ -39,6 +39,13 @@ public class BattleField extends Storage{
         battleSequence(lutemon_1, lutemon_2, skip_battle);
     }
 
+    /**
+     * Only for testing fights in ./../AppTest.fastSimulateBattle
+     * @param lutemon_1
+     * @param lutemon_2
+     * @param skip_battle
+     * @param amount
+     */
     public void testFight(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle, int amount){
         int amount_lutemon_1_won = 0;
         int amount_lutemon_2_won = 0;
@@ -77,6 +84,13 @@ public class BattleField extends Storage{
         amount_attacker_won, amount_defender_won, lutemon_1.getColorName(), amount_lutemon_1_won, lutemon_2.getColorName(), amount_lutemon_2_won));
     }
 
+    /**
+     * Only for testing fights in ./../AppTest.fastSimulateBattle
+     * @param lutemon_1
+     * @param lutemon_2
+     * @param skip_battle
+     * @return
+     */
     private int testFightPhase2(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle){
         Lutemon winner = testBattleSequence(lutemon_1, lutemon_2, skip_battle);
         if (winner.equals(lutemon_1)){
@@ -88,6 +102,13 @@ public class BattleField extends Storage{
         }
     }
 
+    /**
+     * Only for testing fights in ./../AppTest.fastSimulateBattle
+     * @param lutemon_1
+     * @param lutemon_2
+     * @param skip_battle
+     * @return
+     */
     private Lutemon testBattleSequence(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle) {
         Lutemon attacker = lutemon_1;
         Lutemon defender = lutemon_2;
@@ -110,6 +131,12 @@ public class BattleField extends Storage{
         }
     }
 
+    /**
+     * Performs the main sequence in battle
+     * @param lutemon_1 attacks first
+     * @param lutemon_2 defends first
+     * @param skip_battle true if skip extra output of battle
+     */
     public void battleSequence(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle){
         Lutemon attacker = lutemon_1;
         Lutemon defender = lutemon_2;
@@ -135,9 +162,11 @@ public class BattleField extends Storage{
 
 
     /**
-     * Aftermath of battle, defender lost
-     * @param defender who died
-     * @param attacker who won the battle
+     * Handles end of battle
+     * @param defender who lost
+     * @param attacker who won
+     * @param send_loser_home if losing fighters are sent back home,
+     * losing all exp and winning fighter gains exp
      */
     public void endBattle(Lutemon defender, Lutemon attacker, boolean send_loser_home) {
         if (send_loser_home){

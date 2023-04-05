@@ -23,6 +23,7 @@ public class Home extends Storage{
     }
     
     /**
+     * Creates a new Lutemon
      * @param lutemon to create
      */
     public void createLutemon(Lutemon lutemon){

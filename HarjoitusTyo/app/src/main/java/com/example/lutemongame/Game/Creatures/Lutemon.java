@@ -3,11 +3,10 @@ package com.example.lutemongame.Game.Creatures;
 public class Lutemon {
     private static int idCounter = 0;
     /**
+     * Was included in class diagram, has no use as of now. Same function as method getNumberOfCreatedLutemons()
      * @return latest ID created
      */
-    public static int getIdCounter() {
-        return idCounter;
-    }
+    public static int getIdCounter() {return idCounter;}
 
     /**
      * @return amount of Lutemons created, AKA highest ID
@@ -116,6 +115,10 @@ public class Lutemon {
         health = maxHealth;
     }
 
+    /**
+     * Get Lutemon as a string with most data
+     * @return [id] color(name) atk: x; def: x; exp: x; health: x/x
+     */
     @Override
     public String toString(){
         return String.format("[%d] %s(%s) atk: %d; def: %d; exp: %d; health: %d/%d",
@@ -171,43 +174,75 @@ public class Lutemon {
         return losses;
     }
 
+    /**
+     * Adds one win to Lutemon's wins
+     */
     public void addWin(){
         wins++;
     }
 
+    /**
+     * Adds onw loss to Lutemon's losses
+     */
     public void addLoss(){
         losses++;
     }
 
+    /**
+     * Sets the Lutemon as if it was just created
+     */
     public void resetLutemon(){
         wins = 0;
         losses = 0;
         experience = 0;
+        heal();
     }
+
+    /**
+     * true if Lutemon has been selected in a RecyclerView
+     * @return true if selected
+     */
     public boolean isSelected(){
         return selected;
     }
 
+    /**
+     * Selects/deselects a Lutemon in a RecyclerView
+     * @param b true if to be selected, false if to be deselected
+     */
     public void select(boolean b){
         selected = b;
         System.out.println("Selected Lutemon");
     }
 
     /**
-     * @return Color of Lutemon
+     * Getter for color
+     * @return color of Lutemon
      */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Getter for color and name
+     * @return color(name)
+     */
     public String getColorName(){
         return color + "(" + name + ")";
     }
 
+    /**
+     * Getter for id and name
+     * @return [id] name
+     */
     public String getIdName(){
         return "[" + id + "] " + name;
     }
 
+    /**
+     * Getter for id, color and name
+     * @return [id] color(name)
+     */
     public String getIdColorName(){
         return "[" + id + "] " + color + "(" + name + ")";
     }

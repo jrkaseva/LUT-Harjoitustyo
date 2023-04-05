@@ -111,6 +111,11 @@ public abstract class Storage {
         lutemons.remove(lutemon.getId());
     }
 
+    /**
+     * Checks if HashMap contains key with "id"
+     * @param id to be found
+     * @return true if found
+     */
     protected boolean checkIdExists(int id){
         return lutemons.containsKey(id);
     }
