@@ -172,7 +172,7 @@ public class BattleField extends Storage{
         if (send_loser_home){
             defender.setExp(0);
             attacker.gainExp(1);
-            sendHome(defender.getId());
+            sendToHome(defender.getId());
         } 
         else{
             attacker.heal();

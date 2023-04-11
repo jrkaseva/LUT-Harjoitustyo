@@ -38,7 +38,7 @@ public class AppTest {
         // No Lutemon in BattleField
         for(int i : arena.getLutemons().keySet()){
             // Emptying BattleField
-            arena.sendHome(i);
+            arena.sendToHome(i);
         }
         simulateBattle(1, 2);
 
@@ -105,8 +105,8 @@ public class AppTest {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        arena.sendHome(fighter_1_ID);
-        arena.sendHome(fighter_2_ID);
+        arena.sendToHome(fighter_1_ID);
+        arena.sendToHome(fighter_2_ID);
     }
 
 }

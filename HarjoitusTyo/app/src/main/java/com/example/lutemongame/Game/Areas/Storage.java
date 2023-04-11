@@ -36,7 +36,7 @@ public abstract class Storage {
     /**
      * @param id lutemon to be sent to Home
      */
-    public void sendHome(int id){
+    public void sendToHome(int id){
         try {
             Lutemon l = getLutemon(id); l.heal();
             sendTo(Home.getInstance(), l);

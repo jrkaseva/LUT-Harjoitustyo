@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.lutemongame.Game.Areas.Home;
-import com.example.lutemongame.Game.Creatures.Lutemon;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private View decorView;
     private RecyclerView rv;
     private RadioGroup rg;
-
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,27 @@ public class HomeActivity extends AppCompatActivity {
         }
         rv.setAdapter(new ShowLutemonAdapter(getApplicationContext(), storage.getLutemons()));
     }
+    /**
+     * https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
+     */
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
     public void switchToCreateLutemon(View view){
         Intent intent = new Intent(this, CreateLutemonActivity.class);
@@ -67,11 +90,13 @@ public class HomeActivity extends AppCompatActivity {
     public void switchToGym(View view){
         Intent intent = new Intent(this, GymActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void switchToArena(View view){
         Intent intent = new Intent(this, ArenaActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void sendTo(View view){

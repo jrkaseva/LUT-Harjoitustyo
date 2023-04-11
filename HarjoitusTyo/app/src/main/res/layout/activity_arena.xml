@@ -7,8 +7,8 @@
     tools:context=".ArenaActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#D42316"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,9 +25,9 @@
                 android:id="@+id/btnHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="switchToHome"
                 android:layout_weight="1"
                 android:backgroundTint="#5F71D5"
+                android:onClick="switchToHome"
                 android:text="HOME" />
 
             <Button
@@ -35,8 +35,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="switchToGym"
                 android:backgroundTint="#333"
+                android:onClick="switchToGym"
                 android:text="GYM" />
 
             <Button
@@ -64,7 +64,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnCreateLutemon"
+                android:id="@+id/btnBattleLutemon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -77,8 +77,35 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#552"
+                android:onClick="sendTo"
                 android:text="TRANSFER LUTEMONS" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SELECT WHERE TO SEND LUTEMONS:" />
+
+        <RadioGroup
+            android:id="@+id/rgSendFromArena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbSendHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home" />
+
+            <RadioButton
+                android:id="@+id/rbSendGym"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gym" />
+        </RadioGroup>
 
         <TextView
             android:id="@+id/textView2"
