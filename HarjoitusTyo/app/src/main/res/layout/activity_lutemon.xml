@@ -8,6 +8,7 @@
     android:layout_marginBottom="6dp">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8BC34A"
@@ -69,5 +70,17 @@
                 android:layout_weight="1"
                 android:text="LOSSES: -1" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/lutemonInfo"
+            android:layout_width="2dp"
+            android:layout_height="46sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="2sp"
+            android:layout_weight="1"
+            android:paddingTop="2sp"
+            android:src="@android:drawable/ic_dialog_info" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

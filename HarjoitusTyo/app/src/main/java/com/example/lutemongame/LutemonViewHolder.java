@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
-    ImageView lutemonImage;
+    ImageView lutemonImage, lutemonInfo;
     TextView lutemonName, lutemonColor, lutemonWins, lutemonLosses;
     CheckBox cb;
 
@@ -21,5 +21,6 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
         lutemonWins = itemView.findViewById(R.id.idTVLutemonWins);
         lutemonLosses = itemView.findViewById(R.id.idTVLutemonLosses);
         cb = itemView.findViewById(R.id.idCBLutemon);
+        lutemonInfo = itemView.findViewById(R.id.lutemonInfo);
     }
 }

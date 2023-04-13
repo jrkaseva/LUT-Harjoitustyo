@@ -20,6 +20,7 @@ public class Lutemon {
         System.out.println(snow);
         System.out.println(coal);
     }
+    protected int image;
     protected int atk;
     protected int def;
     protected int experience = 0;
@@ -174,6 +175,10 @@ public class Lutemon {
         return losses;
     }
 
+    public String winsLossesToString(){
+        return String.format("%1$-" + 15 + "s","Wins: " + wins) + String.format("|%1$-" + 15 + "s","Losses: " + losses);
+    }
+
     /**
      * Adds one win to Lutemon's wins
      */
@@ -182,7 +187,7 @@ public class Lutemon {
     }
 
     /**
-     * Adds onw loss to Lutemon's losses
+     * Adds one loss to Lutemon's losses
      */
     public void addLoss(){
         losses++;
@@ -244,7 +249,19 @@ public class Lutemon {
      * Getter for id, color and name
      * @return [id] color(name)
      */
-    public String getIdColorName(){
-        return "[" + id + "] " + color + "(" + name + ")";
+    public String getIdNameColor(){
+        return "[" + id + "] " + name + "(" + color + ")";
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public String expHpToString() {
+        return String.format("%1$-" + 15 + "s","Exp: " + experience) + String.format("|%1$-" + 15 + "s","Hp: " + health + "/" + maxHealth);
+    }
+
+    public String atkDefToString() {
+        return String.format("%1$-" + 15 + "s","Atk: " + atk) + String.format("|%1$-" + 15 + "s","Def: " + def);
     }
 }
