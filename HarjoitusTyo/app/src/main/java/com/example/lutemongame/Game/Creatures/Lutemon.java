@@ -176,7 +176,7 @@ public class Lutemon {
     }
 
     public String winsLossesToString(){
-        return String.format("%1$-" + 15 + "s","Wins: " + wins) + String.format("|%1$-" + 15 + "s","Losses: " + losses);
+        return String.format("%1$-" + 7 + "s","Wins: " + wins) + String.format("|%1$-" + 15 + "s","Losses: " + losses);
     }
 
     /**
@@ -250,7 +250,7 @@ public class Lutemon {
      * @return [id] color(name)
      */
     public String getIdNameColor(){
-        return "[" + id + "] " + name + "(" + color + ")";
+        return "[" + id + "] " + name + " (" + color + ")";
     }
 
     public int getImage() {
@@ -258,10 +258,10 @@ public class Lutemon {
     }
 
     public String expHpToString() {
-        return String.format("%1$-" + 15 + "s","Exp: " + experience) + String.format("|%1$-" + 15 + "s","Hp: " + health + "/" + maxHealth);
+        return String.format("%1$-" + 10 + "s","Exp: " + experience) + String.format("|%1$-" + 15 + "s","Hp: " + health + "/" + maxHealth);
     }
 
     public String atkDefToString() {
-        return String.format("%1$-" + 15 + "s","Atk: " + atk) + String.format("|%1$-" + 15 + "s","Def: " + def);
+        return String.format("%1$-" + 10 + "s","Atk: " + atk) + String.format("|%1$-" + 15 + "s","Def: " + def);
     }
 }

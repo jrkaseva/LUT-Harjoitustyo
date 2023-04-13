@@ -42,7 +42,7 @@ public class ArenaActivity extends AppCompatActivity {
             }
         });
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new ShowLutemonAdapter(getApplicationContext(), BattleField.getInstance().getLutemons()));
+        rv.setAdapter(new ShowLutemonAdapter(this, BattleField.getInstance().getLutemons()));
     }
 
     @Override

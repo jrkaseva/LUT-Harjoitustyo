@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
         if(id_list.size() == 0) return;
+        holder.lutemonImage.setImageResource(lutemons.get(id_list.get(position)).getImage());
         holder.lutemonName.setText(lutemons.get(id_list.get(position)).getName());
         holder.lutemonColor.setText("(" + lutemons.get(id_list.get(position)).getColor() + ")");
         holder.lutemonWins.setText("WINS: " + lutemons.get(id_list.get(position)).getWins());
@@ -55,37 +57,39 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.lutemonInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLutemonInfo(pos);
+                showLutemonInfo(pos, v);
             }
         });
     }
 
-    public void showLutemonInfo(int pos){
-        final Dialog dialog = new Dialog(context);
+    public void showLutemonInfo(int pos, View v){
+        Dialog dialog = new Dialog(v.getRootView().getContext());
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.dialog_lutemon);
 
-        // ImageView lutemonImage = dialog.findViewById(R.id.dialogImageView);
+        ImageView lutemonImage = dialog.findViewById(R.id.dialogImageView);
         TextView idNameColor = dialog.findViewById(R.id.dialogTVIdNameColor);
-        TextView atkDef = dialog.findViewById(R.id.dialogTVAtkDef);
-        TextView expHp = dialog.findViewById(R.id.dialogTVExpHp);
-        TextView winsLosses = dialog.findViewById(R.id.dialogTVWinsLosses);
+        TextView atk, def, exp, hp, wins, losses;
+        atk = dialog.findViewById(R.id.dialogTVAtk);
+        def = dialog.findViewById(R.id.dialogTVDef);
+        exp = dialog.findViewById(R.id.dialogTVExp);
+        hp = dialog.findViewById(R.id.dialogTVHp);
+        wins = dialog.findViewById(R.id.dialogTVWins);
+        losses = dialog.findViewById(R.id.dialogTVLosses);
 
         Lutemon temp = lutemons.get(id_list.get(pos));
-        // lutemonImage.setImageResource(temp.getImage());
+        lutemonImage.setImageResource(temp.getImage());
         idNameColor.setText(temp.getIdNameColor());
-        atkDef.setText(temp.atkDefToString());
-        expHp.setText(temp.expHpToString());
-        winsLosses.setText(temp.winsLossesToString());
+        atk.setText("ATK: " + temp.getAtk());
+        def.setText("DEF: " + temp.getDef());
+        exp.setText("EXP: " + temp.getExperience());
+        hp.setText("HP: " + temp.getHealth() + "/" + temp.getMaxHealth());
+        losses.setText("LOSSES: " + temp.getLosses());
+        wins.setText("WINS: " + temp.getWins());
 
         dialog.show();
-
-        Intent i = new Intent(context, ArenaActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.putExtra("key", pos);
-        context.startActivity(i);
-        notifyItemChanged(pos);
     }
 
     @Override
