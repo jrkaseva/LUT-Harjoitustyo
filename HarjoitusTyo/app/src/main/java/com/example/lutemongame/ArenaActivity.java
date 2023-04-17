@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
 import com.example.lutemongame.Game.Creatures.Lutemon;
+import com.example.lutemongame.Game.LutemonAnimation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -139,11 +142,12 @@ public class ArenaActivity extends AppCompatActivity {
         return id_list;
     }
 
-    public void showLutemonFight(int pos, View v){
+    @SuppressLint("SetTextI18n")
+    public void showLutemonFight(View v){
         Dialog dialog = new Dialog(v.getRootView().getContext());
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_fight);
 
         ImageView lutemonImageAttacker = dialog.findViewById(R.id.imageViewAttack);
@@ -158,10 +162,33 @@ public class ArenaActivity extends AppCompatActivity {
         wins = dialog.findViewById(R.id.dialogTVWins);
         losses = dialog.findViewById(R.id.dialogTVLosses);
 */
+        id_list = getCheckedLutemons();
 
-        Lutemon temp = STORAGE.getLutemons().get(id_list.get(pos));
+        if (id_list.size() != 2) return;
+
+        Lutemon temp = STORAGE.getLutemons().get(id_list.get(0));
+        Lutemon temp2 = STORAGE.getLutemons().get(id_list.get(1));
         lutemonImageAttacker.setImageResource(temp.getImage());
-        lutemonImageDefencer.setImageResource(temp.getImage());
+        lutemonImageDefencer.setImageResource(temp2.getImage());
+
+        TextView info = dialog.findViewById(R.id.textViewFight);
+        info.setText("Täällä taistellaa!");
+
+        LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
+        LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext());
+
+        lutemonImageAttacker.startAnimation(animation.getSeqAnimation());
+        info.setText("Nyt hyökätään!");
+        lutemonImageDefencer.startAnimation(animation2.getSeqAnimation());
+        info.setText("Täällä puolustetaan!");
+        Button btnExit = dialog.findViewById(R.id.btnExit);
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         //idNameColor.setText(temp.getIdNameColor());
 
@@ -173,5 +200,6 @@ public class ArenaActivity extends AppCompatActivity {
         wins.setText("WINS: " + temp.getWins());
 */
         dialog.show();
+
     }
 }

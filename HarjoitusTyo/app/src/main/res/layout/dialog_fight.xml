@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/textViewInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,7 +32,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:text="Exit"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDefender"
-        tools:layout_editor_absoluteX="168dp" />
+        app:layout_constraintEnd_toStartOf="@+id/textViewFight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDefender" />
+
+    <TextView
+        android:id="@+id/textViewFight"
+        android:layout_width="190dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="216dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.Game.Creatures.Black;
+import com.example.lutemongame.Game.Creatures.Green;
+import com.example.lutemongame.Game.Creatures.Lutemon;
 
 import java.util.ArrayList;
 
@@ -30,6 +33,9 @@ public class HomeActivity extends AppCompatActivity {
         storage = Home.getInstance();
         rv = findViewById(R.id.idRVHome);
         rg = findViewById(R.id.rgSendFromHome);
+
+        storage.createLutemon(new Black("Kissa"));
+        storage.createLutemon(new Green("Koira"));
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {

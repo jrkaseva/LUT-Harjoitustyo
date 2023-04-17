@@ -16,6 +16,7 @@ public class LutemonAnimation {
     private Animation fadeAnimation;
     private Animation bounceAnimation;
     private Animation rotateAnimation;
+    private Animation seqAnimation;
 
     // Constructors
     public LutemonAnimation() {
@@ -30,6 +31,7 @@ public class LutemonAnimation {
         this.fadeAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
         this.bounceAnimation = AnimationUtils.loadAnimation(context, R.anim.bounce_animation);
         this.rotateAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+        this.seqAnimation = AnimationUtils.loadAnimation(context, R.anim.sequential_animation);
     }
 
     public Animation getFightAnimation() {
@@ -94,6 +96,14 @@ public class LutemonAnimation {
 
     public void setRotateAnimation(Animation rotateAnimation) {
         this.rotateAnimation = rotateAnimation;
+    }
+
+    public Animation getSeqAnimation() {
+        return seqAnimation;
+    }
+
+    public void setSeqAnimation(Animation seqAnimation) {
+        this.seqAnimation = seqAnimation;
     }
 
     @Override
