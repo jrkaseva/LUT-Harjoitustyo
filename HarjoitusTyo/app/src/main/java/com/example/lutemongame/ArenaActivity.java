@@ -183,6 +183,9 @@ public class ArenaActivity extends AppCompatActivity {
         info.setText("Täällä puolustetaan!");
         Button btnExit = dialog.findViewById(R.id.btnExit);
 
+        STORAGE.fight(temp, temp2,false);
+
+
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

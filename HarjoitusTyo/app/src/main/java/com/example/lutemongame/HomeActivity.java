@@ -34,8 +34,14 @@ public class HomeActivity extends AppCompatActivity {
         rv = findViewById(R.id.idRVHome);
         rg = findViewById(R.id.rgSendFromHome);
 
-        storage.createLutemon(new Black("Kissa"));
-        storage.createLutemon(new Green("Koira"));
+        boolean first = true;
+        if (first) {
+            storage.createLutemon(new Black("Kissa"));
+            storage.createLutemon(new Green("Koira"));
+            first = false;
+        }
+        storage.sendToBattleField(2);
+        storage.sendToBattleField(1);
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {
