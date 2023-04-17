@@ -4,18 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.Game.Creatures.Lutemon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ArenaActivity extends AppCompatActivity {
     private final BattleField STORAGE = BattleField.getInstance();
@@ -23,6 +29,8 @@ public class ArenaActivity extends AppCompatActivity {
     private RecyclerView rv;
     private RadioGroup rg;
     private boolean doubleBackToExitPressedOnce = false;
+    private HashMap<Integer, Lutemon> lutemons;
+    private ArrayList<Integer> id_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,5 +137,41 @@ public class ArenaActivity extends AppCompatActivity {
             }
         }
         return id_list;
+    }
+
+    public void showLutemonFight(int pos, View v){
+        Dialog dialog = new Dialog(v.getRootView().getContext());
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.dialog_fight);
+
+        ImageView lutemonImageAttacker = dialog.findViewById(R.id.imageViewAttack);
+        ImageView lutemonImageDefencer = dialog.findViewById(R.id.imageViewDefender);
+
+       // TextView idNameColor = dialog.findViewById(R.id.dialogTVIdNameColor);
+       /* TextView atk, def, exp, hp, wins, losses;
+        atk = dialog.findViewById(R.id.dialogTVAtk);
+        def = dialog.findViewById(R.id.dialogTVDef);
+        exp = dialog.findViewById(R.id.dialogTVExp);
+        hp = dialog.findViewById(R.id.dialogTVHp);
+        wins = dialog.findViewById(R.id.dialogTVWins);
+        losses = dialog.findViewById(R.id.dialogTVLosses);
+*/
+
+        Lutemon temp = STORAGE.getLutemons().get(id_list.get(pos));
+        lutemonImageAttacker.setImageResource(temp.getImage());
+        lutemonImageDefencer.setImageResource(temp.getImage());
+
+        //idNameColor.setText(temp.getIdNameColor());
+
+        /*      atk.setText("ATK: " + temp.getAtk());
+        def.setText("DEF: " + temp.getDef());
+        exp.setText("EXP: " + temp.getExperience());
+        hp.setText("HP: " + temp.getHealth() + "/" + temp.getMaxHealth());
+        losses.setText("LOSSES: " + temp.getLosses());
+        wins.setText("WINS: " + temp.getWins());
+*/
+        dialog.show();
     }
 }

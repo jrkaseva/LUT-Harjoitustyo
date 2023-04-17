@@ -5,6 +5,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 
+import com.example.lutemongame.R;
+
 public class LutemonAnimation {
     private Animation fightAnimation;
     private Animation leftAnimation;
