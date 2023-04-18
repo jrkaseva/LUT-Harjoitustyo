@@ -1,4 +1,4 @@
-package com.example.lutemongame;
+package com.example.lutemongame.Game.OutOfUse;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +22,8 @@ import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
 import com.example.lutemongame.Game.Creatures.Lutemon;
 import com.example.lutemongame.Game.LutemonAnimation;
+import com.example.lutemongame.R;
+import com.example.lutemongame.ShowLutemonAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +40,7 @@ public class ArenaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arena);
+        setContentView(R.layout.fragment_arena);
 
         rv = findViewById(R.id.idRVArena);
         rg = findViewById(R.id.rgSendFromArena);

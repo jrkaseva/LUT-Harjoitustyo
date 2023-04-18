@@ -214,7 +214,6 @@ public class Lutemon {
     public void select(boolean b){
         selected = b;
         if (selected) System.out.println("Selected " + name);
-        else System.out.println("Deselected " + name);
     }
 
     /**
