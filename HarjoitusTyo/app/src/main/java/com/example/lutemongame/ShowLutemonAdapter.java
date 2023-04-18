@@ -1,13 +1,12 @@
 package com.example.lutemongame;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,11 +17,12 @@ import com.example.lutemongame.Game.Creatures.Lutemon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
-    private Context context;
-    private HashMap<Integer, Lutemon> lutemons;
-    private ArrayList<Integer> id_list;
+    private final Context context;
+    private final HashMap<Integer, Lutemon> lutemons;
+    private final ArrayList<Integer> id_list;
 
     public ShowLutemonAdapter(Context context, @NonNull HashMap<Integer, Lutemon> lutemons) {
         this.context = context;
@@ -37,31 +37,21 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         return new LutemonViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_lutemon, parent, false));
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
         if(id_list.size() == 0) return;
-        holder.lutemonImage.setImageResource(lutemons.get(id_list.get(position)).getImage());
-        holder.lutemonName.setText(lutemons.get(id_list.get(position)).getName());
-        holder.lutemonColor.setText("(" + lutemons.get(id_list.get(position)).getColor() + ")");
-        holder.lutemonWins.setText("WINS: " + lutemons.get(id_list.get(position)).getWins());
-        holder.lutemonLosses.setText("LOSSES: " + lutemons.get(id_list.get(position)).getLosses());
+        holder.lutemonImage.setImageResource(Objects.requireNonNull(lutemons.get(id_list.get(position))).getImage());
+        holder.lutemonName.setText(Objects.requireNonNull(lutemons.get(id_list.get(position))).getName());
+        holder.lutemonColor.setText("(" + Objects.requireNonNull(lutemons.get(id_list.get(position))).getColor() + ")");
+        holder.lutemonWins.setText("WINS: " + Objects.requireNonNull(lutemons.get(id_list.get(position))).getWins());
+        holder.lutemonLosses.setText("LOSSES: " + Objects.requireNonNull(lutemons.get(id_list.get(position))).getLosses());
         int pos = holder.getAdapterPosition();
-        holder.cb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(holder.cb.isChecked()) lutemons.get(id_list.get(pos)).select(true);
-                else lutemons.get(id_list.get(pos)).select(false);
-            }
-        });
-        // DOESN'T WORK
-        holder.lutemonInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showLutemonInfo(pos, v);
-            }
-        });
+        holder.cb.setOnClickListener(v -> Objects.requireNonNull(lutemons.get(id_list.get(pos))).select(holder.cb.isChecked()));
+        holder.lutemonInfo.setOnClickListener(v -> showLutemonInfo(pos, v));
     }
 
+    @SuppressLint("SetTextI18n")
     public void showLutemonInfo(int pos, View v){
         Dialog dialog = new Dialog(v.getRootView().getContext());
 
@@ -80,7 +70,7 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         losses = dialog.findViewById(R.id.dialogTVLosses);
 
         Lutemon temp = lutemons.get(id_list.get(pos));
-        lutemonImage.setImageResource(temp.getImage());
+        lutemonImage.setImageResource(Objects.requireNonNull(temp).getImage());
         idNameColor.setText(temp.getIdNameColor());
         atk.setText("ATK: " + temp.getAtk());
         def.setText("DEF: " + temp.getDef());

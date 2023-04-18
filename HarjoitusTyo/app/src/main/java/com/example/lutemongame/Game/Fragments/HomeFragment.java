@@ -1,5 +1,6 @@
 package com.example.lutemongame.Game.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +19,12 @@ import com.example.lutemongame.R;
 import com.example.lutemongame.ShowLutemonAdapter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private final Home STORAGE = Home.getInstance();
     private RecyclerView rv;
     private RadioGroup rg;
-    private Button transfer;
-    private Button createLutemon;
 
 
     @Override
@@ -38,17 +38,13 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         rv = view.findViewById(R.id.idRVHome);
         rg = view.findViewById(R.id.rgSendFromHome);
-        transfer = view.findViewById(R.id.btnHomeTransferLutemons);
-        transfer.setOnClickListener(v -> {
-            sendTo();
-        });
-        createLutemon = view.findViewById(R.id.btnCreateLutemon);
-        createLutemon.setOnClickListener(v ->{
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameMain, new CreateLutemonFragment())
-                    .addToBackStack(null)
-                    .commit();
-        });
+        Button transfer = view.findViewById(R.id.btnHomeTransferLutemons);
+        transfer.setOnClickListener(v -> sendTo());
+        Button createLutemon = view.findViewById(R.id.btnCreateLutemon);
+        createLutemon.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameMain, new CreateLutemonFragment())
+                .addToBackStack(null)
+                .commit());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
@@ -59,6 +55,7 @@ public class HomeFragment extends Fragment {
         super.onResume();
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void sendTo(){
         switch (rg.getCheckedRadioButtonId()) {
             case R.id.rbSendArena:
@@ -80,7 +77,7 @@ public class HomeFragment extends Fragment {
     public ArrayList<Integer> getCheckedLutemons(){
         ArrayList<Integer> id_list = new ArrayList<>();
         for(int id : STORAGE.getLutemons().keySet()){
-            if(STORAGE.getLutemons().get(id).isSelected()){
+            if(Objects.requireNonNull(STORAGE.getLutemons().get(id)).isSelected()){
                 id_list.add(id);
             }
         }

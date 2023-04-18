@@ -1,5 +1,6 @@
 package com.example.lutemongame.Game.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,18 +14,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.TrainingArea;
 import com.example.lutemongame.R;
 import com.example.lutemongame.ShowLutemonAdapter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GymFragment extends Fragment {
     private final TrainingArea STORAGE = TrainingArea.getInstance();
     private RecyclerView rv;
     private RadioGroup rg;
-    private Button transfer;
 
 
     @Override
@@ -38,16 +38,15 @@ public class GymFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gym, container, false);
         rv = view.findViewById(R.id.idRVGym);
         rg = view.findViewById(R.id.rgSendFromGym);
-        transfer = view.findViewById(R.id.btnGymTransferLutemons);
-        transfer.setOnClickListener(v -> {
-            sendTo();
-        });
+        Button transfer = view.findViewById(R.id.btnGymTransferLutemons);
+        transfer.setOnClickListener(v -> sendTo());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void sendTo(){
         switch (rg.getCheckedRadioButtonId()) {
             case R.id.rbSendArena:
@@ -69,7 +68,7 @@ public class GymFragment extends Fragment {
     public ArrayList<Integer> getCheckedLutemons(){
         ArrayList<Integer> id_list = new ArrayList<>();
         for(int id : STORAGE.getLutemons().keySet()){
-            if(STORAGE.getLutemons().get(id).isSelected()){
+            if(Objects.requireNonNull(STORAGE.getLutemons().get(id)).isSelected()){
                 id_list.add(id);
             }
         }

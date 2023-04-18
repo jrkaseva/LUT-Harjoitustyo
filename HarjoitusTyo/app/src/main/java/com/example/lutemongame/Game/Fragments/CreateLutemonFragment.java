@@ -1,5 +1,6 @@
 package com.example.lutemongame.Game.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,18 +40,15 @@ public class CreateLutemonFragment extends Fragment {
         lutemon_name = view.findViewById(R.id.idEditLutemonName);
         rg = view.findViewById(R.id.rgColor);
         Button btnAdd = view.findViewById(R.id.btnAddNewLutemon);
-        btnAdd.setOnClickListener(v -> {
-            createLutemon();
-        });
+        btnAdd.setOnClickListener(v -> createLutemon());
         Button btnCancel = view.findViewById(R.id.btnCancel);
-        btnCancel.setOnClickListener(v -> {
-            getActivity().getSupportFragmentManager().popBackStack();
-        });
+        btnCancel.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
         return view;
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void createLutemon(){
-        Lutemon lutemon = null;
+        Lutemon lutemon;
         String name = lutemon_name.getText().toString();
         switch (rg.getCheckedRadioButtonId()) {
             case R.id.rbWhite:

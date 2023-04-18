@@ -70,11 +70,13 @@ public class AppTest {
         gym.listLutemons();
     }
 
-    public static void addLutemon(){
-        System.out.println("---------------------------------------");
-        home.createLutemon(new Lutemon("Lutemon " + count));
-        count++;
-    }
+// --Commented out by Inspection START (18.4.2023 12.19):
+//    public static void addLutemon(){
+//        System.out.println("---------------------------------------");
+//        home.createLutemon(new Lutemon("Lutemon " + count));
+//        count++;
+//    }
+// --Commented out by Inspection STOP (18.4.2023 12.19)
 
     public static void addLutemon(int i){
         System.out.println("---------------------------------------");

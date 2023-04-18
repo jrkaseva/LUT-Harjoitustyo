@@ -5,8 +5,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 
+import androidx.annotation.NonNull;
+
 import com.example.lutemongame.R;
 
+@SuppressWarnings("ALL")
 public class LutemonAnimation {
     private Animation fightAnimation;
     private Animation leftAnimation;
@@ -106,6 +109,7 @@ public class LutemonAnimation {
         this.seqAnimation = seqAnimation;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "LutemonAnimation{" +

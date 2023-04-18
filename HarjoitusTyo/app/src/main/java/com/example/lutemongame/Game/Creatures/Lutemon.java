@@ -1,12 +1,18 @@
 package com.example.lutemongame.Game.Creatures;
 
+import android.annotation.SuppressLint;
+
+import androidx.annotation.NonNull;
+
 public class Lutemon {
     private static int idCounter = 0;
-    /**
-     * Was included in class diagram, has no use as of now. Same function as method getNumberOfCreatedLutemons()
-     * @return latest ID created
-     */
-    public static int getIdCounter() {return idCounter;}
+// --Commented out by Inspection START (18.4.2023 12.20):
+//    /**
+//     * Was included in class diagram, has no use as of now. Same function as method getNumberOfCreatedLutemons()
+//     * @return latest ID created
+//     */
+//    public static int getIdCounter() {return idCounter;}
+// --Commented out by Inspection STOP (18.4.2023 12.20)
 
     /**
      * @return amount of Lutemons created, AKA highest ID
@@ -51,21 +57,19 @@ public class Lutemon {
      * @return true if Lutemon is alive (health > 0)
      */
     public boolean isAlive(){
-        if(health < 1) return false;
-        return true;
+        return health >= 1;
     }
 
     /**
-     * @param skip_battle
      * @return total power of Lutemon's attack
      */
     public int attack(boolean skip_battle){
         int randomness = (int)(((Math.random() * 100) % 5) - ((Math.random() * 100) % 5));
         if(!skip_battle){
             if (randomness < -1) System.out.println(getName() + " isn't focusing");
-            else if (-1 <= randomness && randomness <= 1) System.out.println(getName() + " is focused in battle");
-            else if (randomness > 1 && randomness < 4) System.out.println(getName() + " is finding weak spots from the opponent");
-            else if (randomness >= 4) System.out.println(getName() + " has been possessed by a warrior! Great attack incoming");
+            else if (randomness <= 1) System.out.println(getName() + " is focused in battle");
+            else if (randomness < 4) System.out.println(getName() + " is finding weak spots from the opponent");
+            else System.out.println(getName() + " has been possessed by a warrior! Great attack incoming");
         }
         return atk + experience + randomness;
     }
@@ -79,12 +83,11 @@ public class Lutemon {
 
     /**
      * @param attacker which attacks this Lutemon
-     * @param skip_battle
      */
     public void defense(Lutemon attacker, boolean skip_battle){
         int damage = attacker.attack(skip_battle);
-        if (!skip_battle) System.out.println(String.format("%s(%s) attacks %s(%s) [POWER: %d]",
-         attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage));
+        if (!skip_battle) System.out.printf("%s(%s) attacks %s(%s) [POWER: %d]%n",
+         attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage);
         if(damage > def) health -= (damage - def);
     }
 
@@ -120,6 +123,8 @@ public class Lutemon {
      * Get Lutemon as a string with most data
      * @return [id] color(name) atk: x; def: x; exp: x; health: x/x
      */
+    @SuppressLint("DefaultLocale")
+    @NonNull
     @Override
     public String toString(){
         return String.format("[%d] %s(%s) atk: %d; def: %d; exp: %d; health: %d/%d",
@@ -189,15 +194,17 @@ public class Lutemon {
         losses++;
     }
 
-    /**
-     * Sets the Lutemon as if it was just created
-     */
-    public void resetLutemon(){
-        wins = 0;
-        losses = 0;
-        experience = 0;
-        heal();
-    }
+// --Commented out by Inspection START (18.4.2023 12.20):
+//    /**
+//     * Sets the Lutemon as if it was just created
+//     */
+//    public void resetLutemon(){
+//        wins = 0;
+//        losses = 0;
+//        experience = 0;
+//        heal();
+//    }
+// --Commented out by Inspection STOP (18.4.2023 12.20)
 
     /**
      * true if Lutemon has been selected in a RecyclerView

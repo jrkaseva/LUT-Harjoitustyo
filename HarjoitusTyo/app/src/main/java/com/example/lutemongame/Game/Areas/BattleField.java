@@ -41,10 +41,6 @@ public class BattleField extends Storage{
 
     /**
      * Only for testing fights in ./../AppTest.fastSimulateBattle
-     * @param lutemon_1
-     * @param lutemon_2
-     * @param skip_battle
-     * @param amount
      */
     public void testFight(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle, int amount){
         int amount_lutemon_1_won = 0;
@@ -53,13 +49,15 @@ public class BattleField extends Storage{
         int amount_defender_won = 0;
         if(lutemon_1 == null || lutemon_2 == null){
             System.out.println("Error in starting battle with Lutemons: null Lutemon");
+            return;
         }
         else if (lutemon_1 == lutemon_2){
             System.out.println("Error in starting battle with Lutemons: same Lutemon");
+            return;
         }
         boolean swap = false;
         while(amount > 0){
-            int result = -1;
+            int result;
             if(swap) result = testFightPhase2(lutemon_2, lutemon_1, skip_battle);
             else result = testFightPhase2(lutemon_1, lutemon_2, skip_battle);
             switch (result){
@@ -80,16 +78,12 @@ public class BattleField extends Storage{
             swap = !swap;
         }
         String[] strings = new String[]{"\nATTACKER WON: %d BATTLES\n", "DEFENDER WON: %d BATTLES\n", "%s WON: %d BATTLES\n", "%s WON: %d BATTLES\n"};
-        System.out.println(String.format(strings[0] + strings[1] + strings[2] + strings[3], 
-        amount_attacker_won, amount_defender_won, lutemon_1.getColorName(), amount_lutemon_1_won, lutemon_2.getColorName(), amount_lutemon_2_won));
+        System.out.printf(strings[0] + strings[1] + strings[2] + strings[3] + "%n",
+        amount_attacker_won, amount_defender_won, lutemon_1.getColorName(), amount_lutemon_1_won, lutemon_2.getColorName(), amount_lutemon_2_won);
     }
 
     /**
      * Only for testing fights in ./../AppTest.fastSimulateBattle
-     * @param lutemon_1
-     * @param lutemon_2
-     * @param skip_battle
-     * @return
      */
     private int testFightPhase2(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle){
         Lutemon winner = testBattleSequence(lutemon_1, lutemon_2, skip_battle);
@@ -104,10 +98,6 @@ public class BattleField extends Storage{
 
     /**
      * Only for testing fights in ./../AppTest.fastSimulateBattle
-     * @param lutemon_1
-     * @param lutemon_2
-     * @param skip_battle
-     * @return
      */
     private Lutemon testBattleSequence(Lutemon lutemon_1, Lutemon lutemon_2, boolean skip_battle) {
         Lutemon attacker = lutemon_1;

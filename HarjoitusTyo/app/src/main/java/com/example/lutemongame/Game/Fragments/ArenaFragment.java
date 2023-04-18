@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,12 +25,12 @@ import com.example.lutemongame.R;
 import com.example.lutemongame.ShowLutemonAdapter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ArenaFragment extends Fragment {
     private final BattleField STORAGE = BattleField.getInstance();
     private RecyclerView rv;
     private RadioGroup rg;
-    private Button transfer;
 
 
     @Override
@@ -45,20 +44,17 @@ public class ArenaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_arena, container, false);
         rv = view.findViewById(R.id.idRVArena);
         rg = view.findViewById(R.id.rgSendFromArena);
-        transfer = view.findViewById(R.id.btnArenaTransferLutemons);
-        transfer.setOnClickListener(v -> {
-            sendTo();
-        });
+        Button transfer = view.findViewById(R.id.btnArenaTransferLutemons);
+        transfer.setOnClickListener(v -> sendTo());
         Button fight = view.findViewById(R.id.btnBattleLutemon);
-        fight.setOnClickListener(v -> {
-            showLutemonFight();
-        });
+        fight.setOnClickListener(v -> showLutemonFight());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void sendTo(){
         switch (rg.getCheckedRadioButtonId()) {
             case R.id.rbSendHome:
@@ -80,7 +76,7 @@ public class ArenaFragment extends Fragment {
     public ArrayList<Integer> getCheckedLutemons(){
         ArrayList<Integer> id_list = new ArrayList<>();
         for(int id : STORAGE.getLutemons().keySet()){
-            if(STORAGE.getLutemons().get(id).isSelected()){
+            if(Objects.requireNonNull(STORAGE.getLutemons().get(id)).isSelected()){
                 id_list.add(id);
             }
         }
@@ -102,10 +98,10 @@ public class ArenaFragment extends Fragment {
 
         if (id_list.size() != 2) return;
 
-        Lutemon temp = STORAGE.getLutemons().get(id_list.get(0));
-        Lutemon temp2 = STORAGE.getLutemons().get(id_list.get(1));
-        lutemonImageAttacker.setImageResource(temp.getImage());
-        lutemonImageDefender.setImageResource(temp2.getImage());
+        Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
+        Lutemon defender = STORAGE.getLutemons().get(id_list.get(1));
+        lutemonImageAttacker.setImageResource(attacker != null ? attacker.getImage() : 0);
+        lutemonImageDefender.setImageResource(defender != null ? defender.getImage() : 0);
 
         TextView info = dialog.findViewById(R.id.textViewFight);
         info.setText("Täällä taistellaa!");
@@ -119,11 +115,13 @@ public class ArenaFragment extends Fragment {
         info.setText("Täällä puolustetaan!");
         Button btnExit = dialog.findViewById(R.id.btnExit);
 
-        STORAGE.fight(temp, temp2,false);
+        STORAGE.fight(attacker, defender,false);
 
 
-        btnExit.setOnClickListener(v -> dialog.dismiss());
+        btnExit.setOnClickListener(v -> {
+            dialog.dismiss();
+            rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
+        });
         dialog.show();
-        rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
     }
 }

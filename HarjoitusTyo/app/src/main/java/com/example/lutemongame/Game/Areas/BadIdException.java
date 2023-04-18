@@ -4,11 +4,6 @@ package com.example.lutemongame.Game.Areas;
  * Exception class for errors when trying to find a Lutemon with an Id that isn't in that data structure
  */
 public class BadIdException extends Exception {
-    /**
-     * Constructor
-     */
-    public BadIdException() {
-    }
 
     /**
      * Constructor with message

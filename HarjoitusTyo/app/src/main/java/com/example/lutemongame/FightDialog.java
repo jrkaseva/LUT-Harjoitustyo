@@ -2,7 +2,6 @@ package com.example.lutemongame;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +22,4 @@ public class FightDialog extends DialogFragment {
 
     }
 
-    public void exit(View v){
-        this.dismiss();
-    }
 }

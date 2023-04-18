@@ -2,7 +2,6 @@ package com.example.lutemongame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,7 +12,6 @@ import android.widget.Toast;
 import com.example.lutemongame.Game.Fragments.ArenaFragment;
 import com.example.lutemongame.Game.Fragments.GymFragment;
 import com.example.lutemongame.Game.Fragments.HomeFragment;
-import com.example.lutemongame.Game.OutOfUse.CreateLutemonActivity;
 
 public class MainActivity extends AppCompatActivity {
     private View decorView;
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
+     * <a href="https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity">...</a>
      */
     @Override
     public void onBackPressed() {
@@ -61,18 +59,7 @@ public class MainActivity extends AppCompatActivity {
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
-    }
-
-    public void switchToCreateLutemon(View view){
-        Intent intent = new Intent(this, CreateLutemonActivity.class);
-        startActivity(intent);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 
     private int hideSystemBars(){
