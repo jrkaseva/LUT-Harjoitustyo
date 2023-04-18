@@ -1,4 +1,4 @@
-package com.example.lutemongame;
+package com.example.lutemongame.Game.OutOfUse;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lutemongame.Game.Areas.Home;
 import com.example.lutemongame.Game.Creatures.*;
+import com.example.lutemongame.R;
 
 public class CreateLutemonActivity extends AppCompatActivity {
     Context context;
@@ -19,7 +20,7 @@ public class CreateLutemonActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_lutemon);
+        setContentView(R.layout.fragment_create_lutemon);
 
         lutemon_name = findViewById(R.id.idEditLutemonName);
         rg = findViewById(R.id.rgColor);

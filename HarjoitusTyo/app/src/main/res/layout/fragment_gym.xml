@@ -4,57 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArenaActivity">
+    tools:context=".Game.Fragments.GymFragment">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#D42316"
+        android:background="#555"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#5F71D5"
-                android:onClick="switchToHome"
-                android:text="HOME" />
-
-            <Button
-                android:id="@+id/btnTrainingArea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#333"
-                android:onClick="switchToGym"
-                android:text="GYM" />
-
-            <Button
-                android:id="@+id/btnArena"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#F44336"
-                android:text="ARENA" />
-
-        </LinearLayout>
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="YOU ARE NOW IN THE ARENA"
+            android:text="YOU ARE NOW IN THE GYM"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -64,16 +31,15 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnBattleLutemon"
+                android:id="@+id/btnCreateLutemon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#552"
-                android:onClick="showLutemonFight"
-                android:text="BATTLE WITH LUTEMONS" />
+                android:text="TRAIN A LUTEMON" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btnGymTransferLutemons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -89,7 +55,7 @@
             android:text="SELECT WHERE TO SEND LUTEMONS:" />
 
         <RadioGroup
-            android:id="@+id/rgSendFromArena"
+            android:id="@+id/rgSendFromGym"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -102,10 +68,10 @@
                 android:text="Home" />
 
             <RadioButton
-                android:id="@+id/rbSendGym"
+                android:id="@+id/rbSendArena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gym" />
+                android:text="Arena" />
         </RadioGroup>
 
         <TextView
@@ -115,7 +81,7 @@
             android:text="SELECT WHICH LUTEMONS YOU WANT TO TRANSFER:" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/idRVArena"
+            android:id="@+id/idRVGym"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

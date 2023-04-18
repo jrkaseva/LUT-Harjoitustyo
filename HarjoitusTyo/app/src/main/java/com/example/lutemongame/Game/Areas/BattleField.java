@@ -169,6 +169,8 @@ public class BattleField extends Storage{
      * losing all exp and winning fighter gains exp
      */
     public void endBattle(Lutemon defender, Lutemon attacker, boolean send_loser_home) {
+        attacker.addWin();
+        defender.addLoss();
         if (send_loser_home){
             defender.setExp(0);
             attacker.gainExp(1);

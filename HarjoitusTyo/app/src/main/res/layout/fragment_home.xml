@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".Game.Fragments.HomeFragment">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -15,39 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#5F71D5"
-                android:text="HOME" />
-
-            <Button
-                android:id="@+id/btnTrainingArea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#333"
-                android:onClick="switchToGym"
-                android:text="GYM" />
-
-            <Button
-                android:id="@+id/btnArena"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#F44336"
-                android:onClick="switchToArena"
-                android:text="ARENA" />
-
-        </LinearLayout>
 
         <TextView
             android:id="@+id/textView"
@@ -73,7 +40,7 @@
                 android:text="CREATE NEW LUTEMON" />
 
             <Button
-                android:id="@+id/btnTransferLutemons"
+                android:id="@+id/btnHomeTransferLutemons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

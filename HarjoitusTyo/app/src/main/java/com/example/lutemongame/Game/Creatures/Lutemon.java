@@ -175,10 +175,6 @@ public class Lutemon {
         return losses;
     }
 
-    public String winsLossesToString(){
-        return String.format("%1$-" + 7 + "s","Wins: " + wins) + String.format("|%1$-" + 15 + "s","Losses: " + losses);
-    }
-
     /**
      * Adds one win to Lutemon's wins
      */
@@ -217,8 +213,8 @@ public class Lutemon {
      */
     public void select(boolean b){
         selected = b;
-        if (selected) System.out.println("Selected Lutemon");
-        else System.out.println("Deselected Lutemon");
+        if (selected) System.out.println("Selected " + name);
+        else System.out.println("Deselected " + name);
     }
 
     /**
@@ -238,14 +234,6 @@ public class Lutemon {
     }
 
     /**
-     * Getter for id and name
-     * @return [id] name
-     */
-    public String getIdName(){
-        return "[" + id + "] " + name;
-    }
-
-    /**
      * Getter for id, color and name
      * @return [id] color(name)
      */
@@ -255,13 +243,5 @@ public class Lutemon {
 
     public int getImage() {
         return image;
-    }
-
-    public String expHpToString() {
-        return String.format("%1$-" + 10 + "s","Exp: " + experience) + String.format("|%1$-" + 15 + "s","Hp: " + health + "/" + maxHealth);
-    }
-
-    public String atkDefToString() {
-        return String.format("%1$-" + 10 + "s","Atk: " + atk) + String.format("|%1$-" + 15 + "s","Def: " + def);
     }
 }

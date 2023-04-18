@@ -102,6 +102,7 @@ public abstract class Storage {
         place.addLutemon(lutemon);
         this.removeLutemon(lutemon);
         System.out.println("---------------------------------------\n" + lutemon.getName() + " sent to the " + place.getName());
+        lutemon.select(false);
     }
 
     /**

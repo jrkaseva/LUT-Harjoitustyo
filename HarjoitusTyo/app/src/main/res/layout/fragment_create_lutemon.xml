@@ -96,13 +96,20 @@
 
         </LinearLayout>
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnAddNewLutemon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:minHeight="32dp"
-            android:onClick="createLutemon"
             android:text="Create Lutemon"
+            android:textSize="24sp" />
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="32dp"
+            android:text="Cancel"
             android:textSize="24sp" />
 
     </LinearLayout>
