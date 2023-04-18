@@ -9,6 +9,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.Game.Creatures.Black;
+import com.example.lutemongame.Game.Creatures.Green;
+import com.example.lutemongame.Game.Creatures.Orange;
+import com.example.lutemongame.Game.Creatures.Pink;
+import com.example.lutemongame.Game.Creatures.White;
 import com.example.lutemongame.Game.Fragments.ArenaFragment;
 import com.example.lutemongame.Game.Fragments.GymFragment;
 import com.example.lutemongame.Game.Fragments.HomeFragment;
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameMain, new HomeFragment())
                 .commit();
+        createTestLutemons();
     }
 
     @Override
@@ -90,5 +97,24 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.frameMain, new HomeFragment())
                 .commit();
         layoutButtons.setBackgroundResource(R.color.home);
+    }
+
+    public void createTestLutemons(){
+        // Creating default Lutemons for testing
+        Home Storage = Home.getInstance();
+        Storage.createLutemon(new Green("Goblin"));
+        Storage.createLutemon(new Orange("Orangutan"));
+        Storage.createLutemon(new White("Walter"));
+        Storage.createLutemon(new Pink("Panther"));
+        Storage.createLutemon(new Black("Betty"));
+        Storage.createLutemon(new Black("Panther"));
+        Storage.createLutemon(new Pink("Flamingo"));
+        Storage.createLutemon(new White("Winter"));
+        Storage.sendToBattleField(1);
+        Storage.sendToBattleField(2);
+        Storage.sendToBattleField(3);
+        Storage.sendToBattleField(4);
+        Storage.sendToTrain(5);
+        Storage.sendToTrain(6);
     }
 }
