@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         rg = view.findViewById(R.id.rgSendFromHome);
         Button transfer = view.findViewById(R.id.btnHomeTransferLutemons);
         transfer.setOnClickListener(v -> sendTo());
-        Button createLutemon = view.findViewById(R.id.btnCreateLutemon);
+        Button createLutemon = view.findViewById(R.id.btnTrainLutemon);
         createLutemon.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameMain, new CreateLutemonFragment())
                 .addToBackStack(null)
