@@ -38,7 +38,7 @@
             android:pivotX="50%"
             android:pivotY="50%"
             android:startOffset="3800"
-            android:repeatCount="infinite"
+            android:repeatCount="3"
             android:repeatMode="restart"
             android:toDegrees="360" />
 

@@ -1,5 +1,7 @@
 package com.example.lutemongame.Game.Fragments;
 
+import static java.util.concurrent.TimeUnit.*;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -30,6 +33,7 @@ public class ArenaFragment extends Fragment {
     private final BattleField STORAGE = BattleField.getInstance();
     private RecyclerView rv;
     private RadioGroup rg;
+    private boolean swap = false;
 
 
     @Override
@@ -50,7 +54,6 @@ public class ArenaFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -87,38 +90,88 @@ public class ArenaFragment extends Fragment {
         Dialog dialog = new Dialog(getActivity());
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_fight);
-
-        ImageView lutemonImageAttacker = dialog.findViewById(R.id.imageViewAttack);
-        ImageView lutemonImageDefender = dialog.findViewById(R.id.imageViewDefender);
-
         ArrayList<Integer> id_list = getCheckedLutemons();
 
         if (id_list.size() != 2) return;
 
         Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
         Lutemon defender = STORAGE.getLutemons().get(id_list.get(1));
-        lutemonImageAttacker.setImageResource(attacker != null ? attacker.getImage() : 0);
-        lutemonImageDefender.setImageResource(defender != null ? defender.getImage() : 0);
 
-        TextView info = dialog.findViewById(R.id.textViewFight);
-        info.setText("Täällä taistellaa!");
-
-        LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
-        LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext());
-
-        lutemonImageAttacker.startAnimation(animation.getSeqAnimation());
-        info.setText("Nyt hyökätään!");
-        lutemonImageDefender.startAnimation(animation2.getSeqAnimation());
-        info.setText("Täällä puolustetaan!");
         Button btnExit = dialog.findViewById(R.id.btnExit);
-
-        STORAGE.fight(attacker, defender,false);
-
+        dialog.show();
 
         btnExit.setOnClickListener(v -> {
             dialog.dismiss();
             rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         });
-        dialog.show();
+        attacker.select(false);
+        defender.select(false);
+
+        fight(attacker, defender, dialog);
+    }
+
+    public void fight(Lutemon attacker, Lutemon defender, Dialog dialog){
+        ImageView left = dialog.findViewById(R.id.imageViewAttack);
+        ImageView right = dialog.findViewById(R.id.imageViewDefender);
+        left.setImageResource(attacker != null ? attacker.getImage() : 0);
+        right.setImageResource(defender != null ? defender.getImage() : 0);
+
+        TextView info = dialog.findViewById(R.id.textViewFight);
+        Button round = dialog.findViewById(R.id.btnRound);
+
+        Lutemon leftLutemon = attacker;
+        Lutemon rightLutemon = defender;
+        round.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(roundOfFight(dialog, leftLutemon, rightLutemon, left, right, info)) round.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+    public void endFight(Lutemon defender, Lutemon attacker, boolean send_loser_home) {
+        attacker.addWin();
+        defender.addLoss();
+        if (send_loser_home){
+            defender.setExp(0);
+            attacker.gainExp(1);
+            STORAGE.sendToHome(defender.getId());
+        }
+        else{
+            attacker.heal();
+            defender.heal();
+        }
+    }
+
+    public boolean roundOfFight(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info){
+
+        LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
+        LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext());
+        Lutemon leftLutemon = attacker;
+        if (swap){
+            Lutemon temp = attacker;
+            attacker = defender;
+            defender = temp;
+        }
+
+        if (attacker.equals(leftLutemon)) {
+            left.startAnimation(animation.getBounceAnimation());
+        } else {
+            right.startAnimation(animation2.getBounceAnimation());
+        }
+
+        String addToText = defender.defense(attacker);
+        info.setText(info.getText() + "\n" + addToText);
+        if (defender.isAlive()) {
+            swap = !swap;
+        } else {
+            TextView winner = dialog.findViewById(R.id.textViewWinner);
+            winner.setText(attacker.getName() + " is the winner!");
+            endFight(defender, attacker, true);
+            dialog.findViewById(R.id.btnExit).setVisibility(View.VISIBLE);
+            return true;
+        }
+        return false;
     }
 }

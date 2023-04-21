@@ -1,8 +1,10 @@
 package com.example.lutemongame.Game.Creatures;
 
-import android.annotation.SuppressLint;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
+import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+import java.util.concurrent.TimeUnit;
 
 public class Lutemon {
     private static int idCounter = 0;
@@ -89,6 +91,20 @@ public class Lutemon {
         if (!skip_battle) System.out.printf("%s(%s) attacks %s(%s) [POWER: %d]%n",
          attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage);
         if(damage > def) health -= (damage - def);
+    }
+    public String defense(Lutemon attacker){
+        int damage = attacker.attack(false);
+        System.out.printf("%s(%s) attacks %s(%s) [POWER: %d]%n",
+                attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage);
+        if(damage > def) health -= (damage - def);
+        try {
+            Thread.sleep(1000);
+            System.out.println("Thread Sleep");
+        } catch (InterruptedException e) {
+            System.out.println("Thread error");
+            throw new RuntimeException(e);
+        }
+        return String.format("%s (%d) | %s (%d/%d)", attacker.name, damage, name, health, maxHealth);
     }
 
     /**

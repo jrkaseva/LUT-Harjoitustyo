@@ -9,7 +9,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="exit">exit</string>
-    <string name="attacker_image">attacker_image</string>
-    <string name="defender_image">defender_image</string>
+    <string name="attacker_image">Attacker image</string>
+    <string name="defender_image">Defender image</string>
+    <string name="exit">Exit</string>
 </resources>
