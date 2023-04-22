@@ -16,10 +16,13 @@ public class LutemonAnimation {
     private Animation rightAnimation;
     private Animation zoomAnimation;
     private Animation slideAnimation;
+    private Animation slideFromRightAnimation;
     private Animation fadeAnimation;
     private Animation bounceAnimation;
     private Animation rotateAnimation;
     private Animation seqAnimation;
+    private Animation hitRightAnimation;
+    private Animation hitLeftAnimation;
 
     // Constructors
     public LutemonAnimation() {
@@ -31,10 +34,13 @@ public class LutemonAnimation {
         this.rightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_right_animation);
         this.zoomAnimation = AnimationUtils.loadAnimation(context, R.anim.zoom_animation);
         this.slideAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_animation);
+        this.slideFromRightAnimation = AnimationUtils.loadAnimation(context, R.anim.slidefromright_animation);
         this.fadeAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
         this.bounceAnimation = AnimationUtils.loadAnimation(context, R.anim.bounce_animation);
         this.rotateAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
         this.seqAnimation = AnimationUtils.loadAnimation(context, R.anim.sequential_animation);
+        this.hitRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_right_animation);
+        this.hitLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_left_animation);
     }
 
     public Animation getFightAnimation() {
@@ -76,7 +82,13 @@ public class LutemonAnimation {
     public void setSlideAnimation(Animation slideAnimation) {
         this.slideAnimation = slideAnimation;
     }
+    public Animation getSlideFromRightAnimation() {
+        return slideFromRightAnimation;
+    }
 
+    public void getSlideFromRightAnimation(Animation getSlideFromRightAnimation) {
+        this.slideFromRightAnimation = slideFromRightAnimation;
+    }
     public Animation getFadeAnimation() {
         return fadeAnimation;
     }
@@ -107,6 +119,20 @@ public class LutemonAnimation {
 
     public void setSeqAnimation(Animation seqAnimation) {
         this.seqAnimation = seqAnimation;
+    }
+    public Animation getHitRightAnimation() {
+        return hitRightAnimation;
+    }
+
+    public void setHitRightAnimation(Animation hitRightAnimation) {
+        this.hitRightAnimation = hitRightAnimation;
+    }
+    public Animation getHitLeftAnimation() {
+        return hitLeftAnimation;
+    }
+
+    public void setHitLeftAnimation(Animation hitLeftAnimation) {
+        this.hitLeftAnimation = hitLeftAnimation;
     }
 
     @NonNull

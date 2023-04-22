@@ -97,13 +97,13 @@ public class Lutemon {
         System.out.printf("%s(%s) attacks %s(%s) [POWER: %d]%n",
                 attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage);
         if(damage > def) health -= (damage - def);
-        try {
+        /*try {
             Thread.sleep(1000);
             System.out.println("Thread Sleep");
         } catch (InterruptedException e) {
             System.out.println("Thread error");
             throw new RuntimeException(e);
-        }
+        }*/
         return String.format("%s (%d) | %s (%d/%d)", attacker.name, damage, name, health, maxHealth);
     }
 
