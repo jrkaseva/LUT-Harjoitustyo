@@ -92,6 +92,7 @@ public class GymFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_train);
         ArrayList<Integer> id_list = getCheckedLutemons();
 
+        //Handler handler = new Handler(Looper.getMainLooper());
         //ImageView lutemonImageAttacker = dialog.findViewById(R.id.imageViewAttackerTraining);
         //ImageView lutemonImageDefender = dialog.findViewById(R.id.imageViewDefenderTraining);
 
@@ -270,9 +271,10 @@ public class GymFragment extends Fragment {
             swap = !swap;
         } else {
             TextView winner = dialog.findViewById(R.id.textViewWinnerTraining);
-            winner.setText(attacker.getName() + " is the winner!");
+            Lutemon attacker1 = attacker;
             endFightTraining(defender, attacker);
             Runnable end = () -> {
+                winner.setText(attacker1.getName() + " is the winner!");
                 dialog.findViewById(R.id.btnExitTraining).setVisibility(View.VISIBLE);
             };
             handler.postDelayed(end, 1400);

@@ -41,9 +41,11 @@ android:background="#57ccaa">
         app:layout_constraintTop_toTopOf="@+id/imageViewAttackerTraining"
         app:srcCompat="@mipmap/ic_lutemon_black_foreground"
         tools:layout_editor_absoluteX="139dp" />
+
 </LinearLayout>
 
-<Button
+
+    <Button
     android:id="@+id/btnRoundTraining"
     android:backgroundTint="#000"
     android:layout_gravity="center"
