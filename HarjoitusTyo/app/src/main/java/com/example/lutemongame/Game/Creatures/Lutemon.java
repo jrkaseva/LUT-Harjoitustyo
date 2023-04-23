@@ -119,6 +119,8 @@ public class Lutemon {
      */
     public void gainExp(int i){
         experience += i;
+        atk += i;
+        def += i;
     }
     
     /**

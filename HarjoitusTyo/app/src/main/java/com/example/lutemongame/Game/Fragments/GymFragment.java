@@ -52,12 +52,8 @@ public class GymFragment extends Fragment {
         rg = view.findViewById(R.id.rgSendFromGym);
         Button transfer = view.findViewById(R.id.btnGymTransferLutemons);
         transfer.setOnClickListener(v -> sendTo());
-        /*Button train = view.findViewById(R.id.btnTrainLutemon);
-        train.setOnClickListener(v -> showTrainingArea());*/
-
         Button train = view.findViewById(R.id.btnTrainLutemon);
         train.setOnClickListener(v -> showChooseDifficulty());
-
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
@@ -104,50 +100,30 @@ public class GymFragment extends Fragment {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_choose_difficulty);
         dialog.show();
-        /*RadioGroup rgDifficult = dialog.findViewById(R.id.rgChooseDifficulty);
-        switch (rgDifficult.getCheckedRadioButtonId()) {
-            case R.id.rbEasy:
-                int difficult = 0;
-                //Lutemon defender = new TrainingOpponentEasy("Trainer Easy");
-                break;
-            case R.id.rbHard:
-                int difficult = 1;
-                //Lutemon defender = new TrainingOpponentHard("Trainer Hard");
-                break;
-            default:
-                Toast toast = Toast.makeText(getContext(), "Choose a difficulty", Toast.LENGTH_SHORT);
-                toast.show();
-        }*/
         Button train = dialog.findViewById(R.id.btnConfirmDifficulty);
         train.setOnClickListener(v -> {
-            int difficult = getDifficulty(dialog);
-            showTrainingArea(difficult);
-            dialog.dismiss();
+            int difficulty = getDifficulty(dialog);
+            if (difficulty != -1) {
+                showTrainingArea(difficulty);
+                dialog.dismiss();
+            }
         });
     }
     public int getDifficulty(Dialog dialog){
         RadioGroup rgDifficult = dialog.findViewById(R.id.rgChooseDifficulty);
-        boolean done = false;
-        int difficult = 0;
-
-        while(done == false) {
-            switch (rgDifficult.getCheckedRadioButtonId()) {
-                case R.id.rbEasy:
-                    difficult = 0;
-                    done = true;
-                    //Lutemon defender = new TrainingOpponentEasy("Trainer Easy");
-                    break;
-                case R.id.rbHard:
-                    difficult = 1;
-                    done = true;
-                    //Lutemon defender = new TrainingOpponentHard("Trainer Hard");
-                    break;
-                default:
-                    Toast toast = Toast.makeText(getContext(), "Choose a difficulty", Toast.LENGTH_SHORT);
-                    toast.show();
-            }
+        int difficulty = -1;
+        switch (rgDifficult.getCheckedRadioButtonId()) {
+            case R.id.rbEasy:
+                difficulty = 0;
+                break;
+            case R.id.rbHard:
+                difficulty = 1;
+                break;
+            default:
+                Toast toast = Toast.makeText(getContext(), "Choose a difficulty", Toast.LENGTH_SHORT);
+                toast.show();
         }
-        return difficult;
+        return difficulty;
     }
     public void showTrainingArea(int difficulty){
         Dialog dialog = new Dialog(getActivity());
@@ -155,92 +131,16 @@ public class GymFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_train);
         ArrayList<Integer> id_list = getCheckedLutemons();
 
-        //Handler handler = new Handler(Looper.getMainLooper());
-        //ImageView lutemonImageAttacker = dialog.findViewById(R.id.imageViewAttackerTraining);
-        //ImageView lutemonImageDefender = dialog.findViewById(R.id.imageViewDefenderTraining);
-
-        //if (id_list.size() != 1) return;
-
         Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
-        //Lutemon defender = new TrainingOpponentEasy("Trainer");
-        Lutemon defender = STORAGE.getLutemons().get(id_list.get(1));
-        //lutemonImageAttacker.setImageResource(attacker != null ? attacker.getImage() : 0);
-        //lutemonImageDefender.setImageResource(defender != null ? defender.getImage() : 0);
-
-        //TextView info = dialog.findViewById(R.id.textViewFightTraining);
-        //info.setText("Taistelu alkakoon!");
-
-        //LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
-        //LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext());
-
-        //Timer timer = new Timer();
-        /*TimerTask slideIn = new TimerTask() {
-            @Override
-            public void run() {
-                lutemonImageAttacker.startAnimation(animation.getRightAnimation());
-                info.setText("Nyt hyökätään!");
-                setDelay(700);
-                lutemonImageDefender.startAnimation(animation.getRotateAnimation());
-                info.setText("Täällä puolustetaan!");
-                setDelay(1000);
-                info.setText("Taistelu on päättynyt.");
-                lutemonImageAttacker.startAnimation(animation.getBounceAnimation());
-                lutemonImageDefender.startAnimation(animation.getBounceAnimation());
-            }
-        };
-        timer.schedule(slideIn, 2000);*/
-
-        //lutemonImageAttacker.startAnimation(animation.getSlideAnimation());
-        //lutemonImageDefender.startAnimation(animation.getSlideAnimation());
-/*
-        TimerTask startTrainingBattle = new TimerTask() {
-            @Override
-            public void run() {
-                STORAGE.trainingFight(attacker, defender);
-            }
-        };
-        timer.schedule(startTrainingBattle, 3000);*/
-        /*TimerTask startBattle = new TimerTask() {
-            @Override
-            public void run() {
-                int i = 0;
-                while(true){
-                    if (i % 2 == 0) {
-                        defender.defense(attacker);
-                    } else {
-                        attacker.defense(defender);
-                    }
-                    if (i % 2 == 0) {
-                        if (defender.isAlive()){
-                            info.setText(defender.getColorName() + " avoided fainting");
-                        } else {
-                            info.setText(("\n" + defender.getColorName() + " passed out. "  + attacker.getColorName() + " won the battle").toUpperCase());
-                            attacker.gainExp(1);
-                            attacker.heal();
-                            defender.heal();
-                            return;
-                        }
-                    } else {
-                        if (attacker.isAlive()) {
-                            info.setText(attacker.getColorName() + " avoided fainting");
-                        } else {
-                            info.setText(("\n" + attacker.getColorName() + " passed out. " + defender.getColorName() + " won the battle").toUpperCase());
-                            defender.gainExp(1);
-                            attacker.heal();
-                            defender.heal();
-                            return;
-                        }
-                    }
-                    i++;
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        };
-        timer.schedule(startBattle, 3000);*/
+        Lutemon defender = null;
+        switch (difficulty) {
+            case 0:
+                defender = new TrainingOpponentEasy("Trainer Easy");
+                break;
+            case 1:
+                defender = new TrainingOpponentHard("Trainer Hard");
+                break;
+        }
 
         Button btnExitTraining = dialog.findViewById(R.id.btnExitTraining);
         dialog.show();
@@ -252,19 +152,10 @@ public class GymFragment extends Fragment {
         attacker.select(false);
         defender.select(false);
 
-        fightTraining(attacker, defender, dialog);
-    }
-    public void setDelay(int delay){
-        System.out.println("Viivytetään...");
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-            //Thread.currentThread().interrupt();
-        }
+        fightTraining(attacker, defender, dialog, difficulty);
     }
 
-    public void fightTraining(Lutemon attacker, Lutemon defender, Dialog dialog){
+    public void fightTraining(Lutemon attacker, Lutemon defender, Dialog dialog, int difficulty){
         ImageView left = dialog.findViewById(R.id.imageViewAttackerTraining);
         ImageView right = dialog.findViewById(R.id.imageViewDefenderTraining);
         left.setImageResource(attacker != null ? attacker.getImage() : 0);
@@ -282,19 +173,26 @@ public class GymFragment extends Fragment {
         round.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(roundOfFightTraining(dialog, leftLutemon, rightLutemon, left, right, info)) round.setVisibility(View.GONE);
+                if(roundOfFightTraining(dialog, leftLutemon, rightLutemon, left, right, info, difficulty)) round.setVisibility(View.GONE);
             }
         });
 
     }
 
-    public void endFightTraining(Lutemon defender, Lutemon attacker) {
-        attacker.gainExp(1);
+    public void endFightTraining(Lutemon defender, Lutemon attacker, int difficulty) {
+        switch (difficulty){
+            case 0:
+                attacker.gainExp(1);
+                break;
+            case 1:
+                attacker.gainExp(2);
+                break;
+        }
         attacker.heal();
         defender.heal();
     }
 
-    public boolean roundOfFightTraining(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info){
+    public boolean roundOfFightTraining(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info, int difficulty){
 
         LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
         Lutemon leftLutemon = attacker;
@@ -336,7 +234,7 @@ public class GymFragment extends Fragment {
         } else {
             TextView winner = dialog.findViewById(R.id.textViewWinnerTraining);
             Lutemon attacker1 = attacker;
-            endFightTraining(defender, attacker);
+            endFightTraining(defender, attacker, difficulty);
             Runnable end = () -> {
                 winner.setText(attacker1.getName() + " is the winner!");
                 dialog.findViewById(R.id.btnExitTraining).setVisibility(View.VISIBLE);
