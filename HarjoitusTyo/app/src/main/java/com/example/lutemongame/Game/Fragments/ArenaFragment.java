@@ -149,6 +149,7 @@ public class ArenaFragment extends Fragment {
         LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
         LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext());
         Lutemon leftLutemon = attacker;
+
         if (swap){
             Lutemon temp = attacker;
             attacker = defender;
@@ -156,9 +157,13 @@ public class ArenaFragment extends Fragment {
         }
 
         if (attacker.equals(leftLutemon)) {
-            left.startAnimation(animation.getBounceAnimation());
+            // Attacker move towards and defense rotate
+            left.startAnimation(animation.getHitLeftAnimation());
+            right.startAnimation(animation2.getRotateAnimation());
         } else {
-            right.startAnimation(animation2.getBounceAnimation());
+            // Attacker move towards and defense rotate
+            right.startAnimation(animation2.getHitRightAnimation());
+            left.startAnimation(animation.getRotateAnimation());
         }
 
         String addToText = defender.defense(attacker);
@@ -168,6 +173,17 @@ public class ArenaFragment extends Fragment {
         } else {
             TextView winner = dialog.findViewById(R.id.textViewWinner);
             winner.setText(attacker.getName() + " is the winner!");
+
+            if (attacker.equals(leftLutemon)) {
+                // Winner Slide in and Looser Zoom out...
+                left.startAnimation(animation.getSlideAnimation());
+                right.startAnimation(animation2.getZoomAnimation());
+            } else {
+                // Winner Slide in and Looser Zoom out...
+                right.startAnimation(animation2.getSlideAnimation());
+                left.startAnimation(animation.getZoomAnimation());
+            }
+
             endFight(defender, attacker, true);
             dialog.findViewById(R.id.btnExit).setVisibility(View.VISIBLE);
             return true;

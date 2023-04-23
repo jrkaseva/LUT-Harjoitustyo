@@ -104,7 +104,7 @@ public class Lutemon {
             System.out.println("Thread error");
             throw new RuntimeException(e);
         }*/
-        return String.format("%s (%d) | %s (%d/%d)", attacker.name, damage, name, health, maxHealth);
+        return String.format("%s (%d/%d) | %s (%d/%d)", attacker.name, damage,attacker.maxHealth, name, health, maxHealth);
     }
 
     /**

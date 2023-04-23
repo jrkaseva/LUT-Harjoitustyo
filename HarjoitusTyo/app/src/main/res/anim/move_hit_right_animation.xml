@@ -5,13 +5,19 @@
     android:fillAfter="true">
 
     <translate
+        android:duration="500"
+        android:fillAfter="true"
         android:fromXDelta="0%p"
+        android:startOffset="400"
         android:toXDelta="30%p"
-        android:duration="700"/>
+        android:toYDelta="1%p"/>
     <translate
-        android:fromXDelta="0%p"
+        android:duration="500"
+        android:fillAfter="true"
+        android:fromYDelta="0%p"
+        android:startOffset="0"
         android:toXDelta="-30%p"
-        android:duration="700"
-        android:startOffset="700"/>
+        android:toYDelta="-1%p"
+        />
 
 </set>

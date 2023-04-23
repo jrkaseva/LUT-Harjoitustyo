@@ -128,15 +128,17 @@ public class GymFragment extends Fragment {
     public int getDifficulty(Dialog dialog){
         RadioGroup rgDifficult = dialog.findViewById(R.id.rgChooseDifficulty);
         boolean done = false;
+        int difficult = 0;
+
         while(done == false) {
             switch (rgDifficult.getCheckedRadioButtonId()) {
                 case R.id.rbEasy:
-                    int difficult = 0;
+                    difficult = 0;
                     done = true;
                     //Lutemon defender = new TrainingOpponentEasy("Trainer Easy");
                     break;
                 case R.id.rbHard:
-                    int difficult = 1;
+                    difficult = 1;
                     done = true;
                     //Lutemon defender = new TrainingOpponentHard("Trainer Hard");
                     break;
@@ -161,7 +163,7 @@ public class GymFragment extends Fragment {
 
         Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
         //Lutemon defender = new TrainingOpponentEasy("Trainer");
-        //Lutemon defender = STORAGE.getLutemons().get(id_list.get(1));
+        Lutemon defender = STORAGE.getLutemons().get(id_list.get(1));
         //lutemonImageAttacker.setImageResource(attacker != null ? attacker.getImage() : 0);
         //lutemonImageDefender.setImageResource(defender != null ? defender.getImage() : 0);
 
