@@ -140,9 +140,6 @@ public class GymFragment extends Fragment {
             case 1:
                 defender = new TrainingOpponentHard("Trainer Hard");
                 break;
-            default:
-                Toast toast = Toast.makeText(getContext(), "Difficulty not selected", Toast.LENGTH_SHORT);
-                toast.show();
         }
 
         Button btnExitTraining = dialog.findViewById(R.id.btnExitTraining);
@@ -156,15 +153,6 @@ public class GymFragment extends Fragment {
         defender.select(false);
 
         fightTraining(attacker, defender, dialog, difficulty);
-    }
-    public void setDelay(int delay){
-        System.out.println("Viivytetään...");
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-            //Thread.currentThread().interrupt();
-        }
     }
 
     public void fightTraining(Lutemon attacker, Lutemon defender, Dialog dialog, int difficulty){
