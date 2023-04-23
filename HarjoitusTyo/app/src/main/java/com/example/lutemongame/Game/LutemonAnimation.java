@@ -7,6 +7,7 @@ import android.view.animation.RotateAnimation;
 
 import androidx.annotation.NonNull;
 
+import com.example.lutemongame.Game.Creatures.Lutemon;
 import com.example.lutemongame.R;
 
 @SuppressWarnings("ALL")
@@ -24,6 +25,7 @@ public class LutemonAnimation {
     private Animation hitRightAnimation;
     private Animation hitLeftAnimation;
 
+    private Animation favoriteAnimation;
     // Constructors
     public LutemonAnimation() {
     }
@@ -42,6 +44,38 @@ public class LutemonAnimation {
         this.hitRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_right_animation);
         this.hitLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_left_animation);
     }
+
+    public void setFavoriteAnimation(Lutemon creatures,Context context){
+        switch (creatures.getColor()){
+            case "Black":
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+            break;
+            case "Pink":
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+            break;
+            case "Orange":
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+            break;
+            case "Green":
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+            break;
+            case "White":
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+            break;
+            default:
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+            break;
+        }
+    }
+
+    public void setSlideFromRightAnimation(Animation slideFromRightAnimation) {
+        this.slideFromRightAnimation = slideFromRightAnimation;
+    }
+
+    public Animation getFavoriteAnimation() {
+        return favoriteAnimation;
+    }
+
 
     public Animation getFightAnimation() {
         return fightAnimation;

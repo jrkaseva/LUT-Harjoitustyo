@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lutemongame.Game.Creatures.Lutemon;
+import com.example.lutemongame.Game.LutemonAnimation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,6 +55,8 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     @SuppressLint("SetTextI18n")
     public void showLutemonInfo(int pos, View v){
         Dialog dialog = new Dialog(v.getRootView().getContext());
+        // the character's favorite move
+        LutemonAnimation animation = new LutemonAnimation(v.getContext());
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -70,7 +73,10 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         losses = dialog.findViewById(R.id.dialogTVLosses);
 
         Lutemon temp = lutemons.get(id_list.get(pos));
+        animation.setFavoriteAnimation(temp,v.getContext());
+
         lutemonImage.setImageResource(Objects.requireNonNull(temp).getImage());
+        lutemonImage.startAnimation(animation.getFavoriteAnimation());
         idNameColor.setText(temp.getIdNameColor());
         atk.setText("ATK: " + temp.getAtk());
         def.setText("DEF: " + temp.getDef());
