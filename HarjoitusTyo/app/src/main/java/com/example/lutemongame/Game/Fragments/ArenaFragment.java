@@ -146,8 +146,8 @@ public class ArenaFragment extends Fragment {
 
     public boolean roundOfFight(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info){
 
-        LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
-        LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext());
+        LutemonAnimation animation = new LutemonAnimation(dialog.getContext(),attacker);
+        LutemonAnimation animation2 = new LutemonAnimation(dialog.getContext(),defender);
         Lutemon leftLutemon = attacker;
 
         if (swap){
@@ -159,11 +159,11 @@ public class ArenaFragment extends Fragment {
         if (attacker.equals(leftLutemon)) {
             // Attacker move towards and defense rotate
             left.startAnimation(animation.getHitLeftAnimation());
-            right.startAnimation(animation2.getRotateAnimation());
+            right.startAnimation(animation2.getFavoriteAnimation());
         } else {
             // Attacker move towards and defense rotate
             right.startAnimation(animation2.getHitRightAnimation());
-            left.startAnimation(animation.getRotateAnimation());
+            left.startAnimation(animation.getFavoriteAnimation());
         }
 
         String addToText = defender.defense(attacker);

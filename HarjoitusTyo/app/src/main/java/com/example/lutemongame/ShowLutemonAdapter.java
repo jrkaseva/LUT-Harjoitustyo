@@ -73,7 +73,7 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         losses = dialog.findViewById(R.id.dialogTVLosses);
 
         Lutemon temp = lutemons.get(id_list.get(pos));
-        animation.setFavoriteAnimation(temp,v.getContext());
+        animation.setFavoriteAnimation(v.getContext(),temp);
 
         lutemonImage.setImageResource(Objects.requireNonNull(temp).getImage());
         lutemonImage.startAnimation(animation.getFavoriteAnimation());

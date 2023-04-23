@@ -44,20 +44,35 @@ public class LutemonAnimation {
         this.hitRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_right_animation);
         this.hitLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_left_animation);
     }
+    public LutemonAnimation(Context context, Lutemon lutemon) {
+        this.fightAnimation = AnimationUtils.loadAnimation(context, R.anim.fight_animation);
+        this.leftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_left_animation);
+        this.rightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_right_animation);
+        this.zoomAnimation = AnimationUtils.loadAnimation(context, R.anim.zoom_animation);
+        this.slideAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_animation);
+        this.slideFromRightAnimation = AnimationUtils.loadAnimation(context, R.anim.slidefromright_animation);
+        this.fadeAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
+        this.bounceAnimation = AnimationUtils.loadAnimation(context, R.anim.bounce_animation);
+        this.rotateAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+        this.seqAnimation = AnimationUtils.loadAnimation(context, R.anim.sequential_animation);
+        this.hitRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_right_animation);
+        this.hitLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_left_animation);
+        this.setFavoriteAnimation(context,lutemon);
+    }
 
-    public void setFavoriteAnimation(Lutemon creatures,Context context){
+    public void setFavoriteAnimation(Context context, Lutemon creatures){
         switch (creatures.getColor()){
             case "Black":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
             break;
             case "Pink":
-                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.blink_animation);
             break;
             case "Orange":
-                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             break;
             case "Green":
-                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
+                this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.my_animation);
             break;
             case "White":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
