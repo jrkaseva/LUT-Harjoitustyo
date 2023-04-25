@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.Game.Areas.TrainingArea;
 import com.example.lutemongame.Game.Creatures.Black;
 import com.example.lutemongame.Game.Creatures.Green;
 import com.example.lutemongame.Game.Creatures.Orange;
@@ -29,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layoutButtons = findViewById(R.id.linearLayoutMain);
-
+        Home.getInstance().loadLutemon(this, "home.data");
+        TrainingArea.getInstance().loadLutemon(this, "gym.data");
+        BattleField.getInstance().loadLutemon(this, "arena.data");
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {
             if (visibility == 0){
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameMain, new HomeFragment())
                 .commit();
-        createTestLutemons();
+        //createTestLutemons();
     }
 
     @Override
@@ -60,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
+            TrainingArea.getInstance().saveLutemon(this,"gym.data");
+            BattleField.getInstance().saveLutemon(this, "arena.data");
+            Home.getInstance().saveLutemon(this, "home.data");
             return;
         }
 
@@ -116,5 +123,13 @@ public class MainActivity extends AppCompatActivity {
         Storage.sendToBattleField(4);
         Storage.sendToTrain(5);
         Storage.sendToTrain(6);
+    }
+
+    @Override
+    protected void onDestroy() {
+        TrainingArea.getInstance().saveLutemon(this,"gym.data");
+        BattleField.getInstance().saveLutemon(this, "arena.data");
+        Home.getInstance().saveLutemon(this, "home.data");
+        super.onDestroy();
     }
 }

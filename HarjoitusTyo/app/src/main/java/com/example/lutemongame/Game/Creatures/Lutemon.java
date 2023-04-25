@@ -4,9 +4,11 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
+
+import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
-public class Lutemon {
+public class Lutemon implements Serializable {
     private static int idCounter = 0;
 // --Commented out by Inspection START (18.4.2023 12.20):
 //    /**
@@ -268,4 +270,6 @@ public class Lutemon {
     public int getImage() {
         return image;
     }
+
+
 }

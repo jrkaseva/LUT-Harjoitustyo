@@ -71,6 +71,8 @@ public class CreateLutemonFragment extends Fragment {
                 lutemon = new Lutemon("Error");
         }
         Home.getInstance().createLutemon(lutemon);
+        Home.getInstance().saveLutemon(getContext(),"home.data");
+
         lutemon_name.setText("");
         Toast toast = Toast.makeText(getContext(), "Lutemon created", Toast.LENGTH_LONG);
         toast.show();
