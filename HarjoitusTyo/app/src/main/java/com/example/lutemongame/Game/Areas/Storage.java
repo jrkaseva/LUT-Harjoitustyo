@@ -1,9 +1,11 @@
 package com.example.lutemongame.Game.Areas;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import com.example.lutemongame.Game.Creatures.Lutemon;
 
-public abstract class Storage {
+public abstract class Storage implements Serializable {
+    private static final long serialVersionUID = 1234567;
     protected String name;
     protected HashMap<Integer, Lutemon> lutemons = new HashMap<>();
 

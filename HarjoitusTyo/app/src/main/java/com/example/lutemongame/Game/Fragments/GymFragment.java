@@ -38,6 +38,8 @@ public class GymFragment extends Fragment {
     private RecyclerView rv;
     private RadioGroup rg;
     private boolean swap = false;
+    private Lutemon easy = new Lutemon("Trainer easy", true);
+    private Lutemon hard = new Lutemon("Trainer hard", false);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -132,15 +134,8 @@ public class GymFragment extends Fragment {
         ArrayList<Integer> id_list = getCheckedLutemons();
 
         Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
-        Lutemon defender = null;
-        switch (difficulty) {
-            case 0:
-                defender = new TrainingOpponentEasy("Trainer Easy");
-                break;
-            case 1:
-                defender = new TrainingOpponentHard("Trainer Hard");
-                break;
-        }
+        boolean trainEasy = true;
+        if (difficulty == 1) trainEasy = false;
 
         Button btnExitTraining = dialog.findViewById(R.id.btnExitTraining);
         dialog.show();
@@ -150,9 +145,8 @@ public class GymFragment extends Fragment {
             rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         });
         attacker.select(false);
-        defender.select(false);
-
-        fightTraining(attacker, defender, dialog, difficulty);
+        if(trainEasy) fightTraining(attacker, easy, dialog, difficulty);
+        else fightTraining(attacker, hard, dialog, difficulty);
     }
 
     public void fightTraining(Lutemon attacker, Lutemon defender, Dialog dialog, int difficulty){
@@ -180,6 +174,9 @@ public class GymFragment extends Fragment {
     }
 
     public void endFightTraining(Lutemon defender, Lutemon attacker, int difficulty) {
+        attacker.heal();
+        defender.heal();
+        if(attacker.equals(easy) || attacker.equals(hard)) return;
         switch (difficulty){
             case 0:
                 attacker.gainExp(1);
@@ -188,8 +185,6 @@ public class GymFragment extends Fragment {
                 attacker.gainExp(2);
                 break;
         }
-        attacker.heal();
-        defender.heal();
     }
 
     public boolean roundOfFightTraining(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info, int difficulty){

@@ -55,6 +55,30 @@ public class Lutemon {
         id = ++idCounter;
     }
 
+
+    /**
+     * Trainer constructor
+     * @param name of trainer
+     * @param easy if easy trainer, else hard trainer
+     */
+    public Lutemon(String name, boolean easy){
+        this.name = name;
+        if(easy){
+            atk = 1;
+            def = 3;
+            health = 12; maxHealth = 12;
+            color = "Black";
+            image = R.mipmap.ic_lutemon_black_foreground;
+        }
+        else {
+            atk = 10;
+            def = 3;
+            health = 20; maxHealth = 20;
+            color = "Black";
+            image = R.mipmap.ic_lutemon_black_foreground;
+        }
+    }
+
     /**
      * @return true if Lutemon is alive (health > 0)
      */
