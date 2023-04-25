@@ -28,6 +28,7 @@ public class Home extends Storage{
      */
     public void createLutemon(Lutemon lutemon){
         getInstance().getLutemons().put(lutemon.getId(), lutemon);
+
         System.out.println("NEW LUTEMON CREATED (ID: [" + lutemon.getId() + "])");
     }
 }

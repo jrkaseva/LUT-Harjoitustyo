@@ -1,6 +1,14 @@
 package com.example.lutemongame.Game.Areas;
 
+<<<<<<< HEAD
 import java.io.Serializable;
+=======
+import android.content.Context;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+>>>>>>> 416a5c7a6e16e1621e7cafb32715922ebc1059a2
 import java.util.HashMap;
 import com.example.lutemongame.Game.Creatures.Lutemon;
 
@@ -122,4 +130,33 @@ public abstract class Storage implements Serializable {
     protected boolean checkIdExists(int id){
         return lutemons.containsKey(id);
     }
+
+    public void saveLutemon(Context context, String filename){
+        ObjectOutputStream lutemonWriter = null;
+        try {
+            lutemonWriter = new ObjectOutputStream(context.openFileOutput(filename, Context.MODE_PRIVATE));
+            lutemonWriter.writeObject(lutemons);
+            lutemonWriter.close();
+            System.out.println("Data saved!");
+        } catch (IOException e) {
+            System.out.println("Error...");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void loadLutemon(Context context, String filename){
+        try {
+            ObjectInputStream lutemonReader = new ObjectInputStream(context.openFileInput(filename));
+            lutemons = (HashMap<Integer, Lutemon>)lutemonReader.readObject();
+            lutemonReader.close();
+            System.out.println("Data Read!");
+        } catch (IOException e) {
+            System.out.println("Error IO...");
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error ClassNotFound...");
+            throw new RuntimeException(e);
+        }
+    }
+
 }

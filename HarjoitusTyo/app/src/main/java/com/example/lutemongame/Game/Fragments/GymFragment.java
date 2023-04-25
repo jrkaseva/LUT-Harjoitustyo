@@ -201,23 +201,26 @@ public class GymFragment extends Fragment {
         }
 
         if (attacker.equals(leftLutemon)) {
-            left.startAnimation(animation.getHitRightAnimation());
-            TimerTask attack = new TimerTask() {
+            left.startAnimation(animation.getHitLeftAnimation());
+            right.startAnimation(animation.getRotateAnimation());
+
+/*            TimerTask attack = new TimerTask() {
                 @Override
                 public void run() {
                     right.startAnimation(animation.getRotateAnimation());
                 }
             };
-            timer.schedule(attack, 450);
+            timer.schedule(attack, 450);*/
         } else {
-            right.startAnimation(animation.getHitLeftAnimation());
-            TimerTask attack = new TimerTask() {
+            right.startAnimation(animation.getHitRightAnimation());
+            left.startAnimation(animation.getRotateAnimation());
+           /* TimerTask attack = new TimerTask() {
                 @Override
                 public void run() {
                     left.startAnimation(animation.getRotateAnimation());
                 }
             };
-            timer.schedule(attack, 450);
+            timer.schedule(attack, 450);*/
         }
 
         String addToText = defender.defense(attacker);
@@ -236,23 +239,28 @@ public class GymFragment extends Fragment {
             };
             handler.postDelayed(end, 1400);
             if (attacker.equals(leftLutemon)) {
-                TimerTask attack = new TimerTask() {
-                    @Override
-                    public void run() {
+             //   left.startAnimation(animation.getBounceAnimation());
+             //   right.startAnimation(animation.getZoomAnimation());
+                Runnable end3 = () -> {
                         left.startAnimation(animation.getBounceAnimation());
                         right.startAnimation(animation.getZoomAnimation());
-                    }
-                };
-                timer.schedule(attack, 1400);
+                    };
+                handler.postDelayed(end3, 1400);
             } else {
-                TimerTask attack = new TimerTask() {
+            Runnable end2 = () -> {
+                right.startAnimation(animation.getBounceAnimation());
+                left.startAnimation(animation.getZoomAnimation());
+            };
+            handler.postDelayed(end2, 1400);
+
+               /* TimerTask attack = new TimerTask() {
                     @Override
                     public void run() {
                         right.startAnimation(animation.getBounceAnimation());
                         left.startAnimation(animation.getZoomAnimation());
                     }
                 };
-                timer.schedule(attack, 1400);
+                timer.schedule(attack, 1400);*/
             }
             return true;
         }
