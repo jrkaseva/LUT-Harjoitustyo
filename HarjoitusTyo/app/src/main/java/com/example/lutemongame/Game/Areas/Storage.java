@@ -1,19 +1,15 @@
 package com.example.lutemongame.Game.Areas;
 
-<<<<<<< HEAD
-import java.io.Serializable;
-=======
 import android.content.Context;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
->>>>>>> 416a5c7a6e16e1621e7cafb32715922ebc1059a2
 import java.util.HashMap;
 import com.example.lutemongame.Game.Creatures.Lutemon;
 
-public abstract class Storage implements Serializable {
-    private static final long serialVersionUID = 1234567;
+public abstract class Storage {
     protected String name;
     protected HashMap<Integer, Lutemon> lutemons = new HashMap<>();
 
@@ -131,31 +127,42 @@ public abstract class Storage implements Serializable {
         return lutemons.containsKey(id);
     }
 
+    /**
+     * Save Lutemon HasMap to file
+     * @param context
+     * @param filename
+     */
     public void saveLutemon(Context context, String filename){
         ObjectOutputStream lutemonWriter = null;
         try {
             lutemonWriter = new ObjectOutputStream(context.openFileOutput(filename, Context.MODE_PRIVATE));
             lutemonWriter.writeObject(lutemons);
             lutemonWriter.close();
-            System.out.println("Data saved!");
-        } catch (IOException e) {
+            System.out.println("Data to " + filename + " is saved!");
+
+        }catch (IOException e) {
             System.out.println("Error...");
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
+    /**
+     * Load Lutemon data from file HasMap
+     * @param context
+     * @param filename
+     */
     public void loadLutemon(Context context, String filename){
         try {
             ObjectInputStream lutemonReader = new ObjectInputStream(context.openFileInput(filename));
             lutemons = (HashMap<Integer, Lutemon>)lutemonReader.readObject();
             lutemonReader.close();
-            System.out.println("Data Read!");
+            System.out.println("Data from " + filename + " is read!");
         } catch (IOException e) {
             System.out.println("Error IO...");
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             System.out.println("Error ClassNotFound...");
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

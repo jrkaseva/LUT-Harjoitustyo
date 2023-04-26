@@ -31,9 +31,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layoutButtons = findViewById(R.id.linearLayoutMain);
+        // Load Data
         Home.getInstance().loadLutemon(this, "home.data");
+        int id = Home.getInstance().getLutemons().size();
+        System.out.println("Count of Lutemons: "+ id);
+
         TrainingArea.getInstance().loadLutemon(this, "gym.data");
         BattleField.getInstance().loadLutemon(this, "arena.data");
+
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {
             if (visibility == 0){
@@ -63,10 +68,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
             TrainingArea.getInstance().saveLutemon(this,"gym.data");
             BattleField.getInstance().saveLutemon(this, "arena.data");
             Home.getInstance().saveLutemon(this, "home.data");
+            super.onBackPressed();
+
             return;
         }
 
