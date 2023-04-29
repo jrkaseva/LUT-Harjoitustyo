@@ -116,6 +116,8 @@ public class ArenaFragment extends Fragment {
         attacker.addWin();
         defender.addLoss();
         if (send_loser_home){
+            defender.resetAtk();
+            defender.resetDef();
             defender.setExp(0);
             attacker.gainExp(1);
             STORAGE.sendToHome(defender.getId());

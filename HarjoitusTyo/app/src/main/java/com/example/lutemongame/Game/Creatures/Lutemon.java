@@ -68,7 +68,7 @@ public class Lutemon implements Serializable {
     public Lutemon(String name, boolean easy){
         this.name = name;
         if(easy){
-            atk = 1;
+            atk = 3;
             def = 3;
             health = 12; maxHealth = 12;
             color = "Black";
@@ -101,7 +101,7 @@ public class Lutemon implements Serializable {
             else if (randomness < 4) System.out.println(getName() + " is finding weak spots from the opponent");
             else System.out.println(getName() + " has been possessed by a warrior! Great attack incoming");
         }
-        return atk + experience + randomness;
+        return atk + randomness;
     }
 
     /**
@@ -141,7 +141,12 @@ public class Lutemon implements Serializable {
     public void setExp(int i){
         experience = i;
     }
-
+    public void resetAtk(){
+        atk = atk - experience;
+    }
+    public void resetDef(){
+        def = def - experience;;
+    }
     /**
      * @param i added to existing experience points
      */

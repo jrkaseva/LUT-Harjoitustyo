@@ -197,7 +197,7 @@ public class GymFragment extends Fragment {
 
         String addToText = defender.defense(attacker);
         @SuppressLint("SetTextI18n") Runnable addText = () -> info.setText(info.getText() + "\n" + addToText);
-        handler.postDelayed(addText, 1400);
+        handler.postDelayed(addText, 1000);
 
         if (defender.isAlive()) {
             swap = !swap;
@@ -209,30 +209,19 @@ public class GymFragment extends Fragment {
                 winner.setText(attacker1.getName() + " is the winner!");
                 dialog.findViewById(R.id.btnExitTraining).setVisibility(View.VISIBLE);
             };
-            handler.postDelayed(end, 1400);
+            handler.postDelayed(end, 1000);
             if (attacker.equals(leftLutemon)) {
-             //   left.startAnimation(animation.getBounceAnimation());
-             //   right.startAnimation(animation.getZoomAnimation());
                 Runnable end3 = () -> {
                         left.startAnimation(animation.getBounceAnimation());
                         right.startAnimation(animation.getZoomAnimation());
                     };
-                handler.postDelayed(end3, 1400);
+                handler.postDelayed(end3, 1000);
             } else {
             Runnable end2 = () -> {
                 right.startAnimation(animation.getBounceAnimation());
                 left.startAnimation(animation.getZoomAnimation());
             };
-            handler.postDelayed(end2, 1400);
-
-               /* TimerTask attack = new TimerTask() {
-                    @Override
-                    public void run() {
-                        right.startAnimation(animation.getBounceAnimation());
-                        left.startAnimation(animation.getZoomAnimation());
-                    }
-                };
-                timer.schedule(attack, 1400);*/
+            handler.postDelayed(end2, 1000);
             }
             return true;
         }
