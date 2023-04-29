@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         Storage.sendToTrain(6);
     }
 
-    protected void loadData(){
+    private void loadData(){
         Home.getInstance().loadLutemon(this, "home.data");
         int count = Home.getInstance().getLutemons().size();
         System.out.println("Count of Lutemons: " + count);
