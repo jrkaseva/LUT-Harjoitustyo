@@ -79,8 +79,8 @@ public class LutemonAnimation {
      * @param context
      * @return creatures
      */
-    public void setFavoriteAnimation(Context context, Lutemon creatures) {
-        switch (creatures.getColor()) {
+    public void setFavoriteAnimation(Context context, Lutemon creature) {
+        switch (creature.getColor()) {
             case "Black":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
                 break;

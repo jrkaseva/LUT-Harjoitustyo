@@ -116,8 +116,9 @@ public abstract class Storage implements Serializable {
     /**
      * @param lutemon to be removed from hashmap
      */
-    private void removeLutemon(Lutemon lutemon) {
+    public void removeLutemon(Lutemon lutemon) {
         lutemons.remove(lutemon.getId());
+        System.out.println("Removed Lutemon: " + lutemon.getIdNameColor());
     }
 
     /**
@@ -125,7 +126,7 @@ public abstract class Storage implements Serializable {
      * @param id to be found
      * @return true if found
      */
-    protected boolean checkIdExists(int id){
+    public boolean checkIdExists(int id){
         return lutemons.containsKey(id);
     }
 

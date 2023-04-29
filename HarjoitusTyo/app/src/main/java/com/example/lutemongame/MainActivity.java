@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lutemongame.Game.Areas.BadIdException;
 import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
 import com.example.lutemongame.Game.Areas.Storage;
@@ -69,11 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            TrainingArea.getInstance().saveLutemon(this,"gym.data");
-            BattleField.getInstance().saveLutemon(this, "arena.data");
-            Home.getInstance().saveLutemon(this, "home.data");
             super.onBackPressed();
-
             return;
         }
 
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         int count = Home.getInstance().getLutemons().size();
         System.out.println("Count of Lutemons: " + count);
         Home.getInstance().listLutemons();
-        Lutemon.setIdCounter(getHighestID());
+        if (getHighestID() != -1) Lutemon.setIdCounter(getHighestID());
 
         TrainingArea.getInstance().loadLutemon(this, "gym.data");
         BattleField.getInstance().loadLutemon(this, "arena.data");
@@ -181,5 +178,23 @@ public class MainActivity extends AppCompatActivity {
         if (TrainingArea.getInstance().getHighestID() > max)
             max = TrainingArea.getInstance().getHighestID();
         return max;
+    }
+
+    public void removeLutemon(int id) {
+        try {
+            BattleField.getInstance().removeLutemon(BattleField.getInstance().getLutemon(id));
+        } catch (BadIdException e) {
+            System.out.println(e.getMessage() + "[BATTLEFIELD]");
+        }
+        try {
+            TrainingArea.getInstance().removeLutemon(TrainingArea.getInstance().getLutemon(id));
+        } catch (BadIdException e) {
+            System.out.println(e.getMessage() + "[TRAININGAREA]");
+        }
+        try {
+            Home.getInstance().removeLutemon(Home.getInstance().getLutemon(id));
+        } catch (BadIdException e) {
+            System.out.println(e.getMessage() + "[HOME]");
+        }
     }
 }
