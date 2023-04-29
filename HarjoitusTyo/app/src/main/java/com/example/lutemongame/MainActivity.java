@@ -25,19 +25,24 @@ public class MainActivity extends AppCompatActivity {
     private View decorView;
     private boolean doubleBackToExitPressedOnce = false;
     private LinearLayout layoutButtons;
-
+    private boolean opening = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layoutButtons = findViewById(R.id.linearLayoutMain);
-        // Load Data
-        Home.getInstance().loadLutemon(this, "home.data");
-        int id = Home.getInstance().getLutemons().size();
-        System.out.println("Count of Lutemons: "+ id);
 
-        TrainingArea.getInstance().loadLutemon(this, "gym.data");
-        BattleField.getInstance().loadLutemon(this, "arena.data");
+        if (opening) {
+            // Load Data
+            Home.getInstance().loadLutemon(this, "home.data");
+            int id = Home.getInstance().getLutemons().size();
+            System.out.println("Count of Lutemons: " + id);
+            Home.getInstance().listLutemons();
+
+            TrainingArea.getInstance().loadLutemon(this, "gym.data");
+            BattleField.getInstance().loadLutemon(this, "arena.data");
+            opening = false;
+        }
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {

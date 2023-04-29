@@ -26,10 +26,18 @@ public class LutemonAnimation {
     private Animation hitLeftAnimation;
 
     private Animation favoriteAnimation;
+
     // Constructors
+    /**
+     * Default Constructors
+     */
     public LutemonAnimation() {
     }
 
+    /**
+     *
+     * @param context
+     */
     public LutemonAnimation(Context context) {
         this.fightAnimation = AnimationUtils.loadAnimation(context, R.anim.fight_animation);
         this.leftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_left_animation);
@@ -44,6 +52,12 @@ public class LutemonAnimation {
         this.hitRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_right_animation);
         this.hitLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_left_animation);
     }
+
+    /**
+     * Constructor
+     * @param context
+     * @return creatures
+     */
     public LutemonAnimation(Context context, Lutemon lutemon) {
         this.fightAnimation = AnimationUtils.loadAnimation(context, R.anim.fight_animation);
         this.leftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_left_animation);
@@ -57,32 +71,38 @@ public class LutemonAnimation {
         this.seqAnimation = AnimationUtils.loadAnimation(context, R.anim.sequential_animation);
         this.hitRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_right_animation);
         this.hitLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_hit_left_animation);
-        this.setFavoriteAnimation(context,lutemon);
+        this.setFavoriteAnimation(context, lutemon);
     }
 
-    public void setFavoriteAnimation(Context context, Lutemon creatures){
-        switch (creatures.getColor()){
+    /**
+     *
+     * @param context
+     * @return creatures
+     */
+    public void setFavoriteAnimation(Context context, Lutemon creatures) {
+        switch (creatures.getColor()) {
             case "Black":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
-            break;
+                break;
             case "Pink":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.blink_animation);
-            break;
+                break;
             case "Orange":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
-            break;
+                break;
             case "Green":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.my_animation);
-            break;
+                break;
             case "White":
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
-            break;
+                break;
             default:
                 this.favoriteAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_animation);
-            break;
+                break;
         }
     }
 
+    // Setters and Getters
     public void setSlideFromRightAnimation(Animation slideFromRightAnimation) {
         this.slideFromRightAnimation = slideFromRightAnimation;
     }
@@ -131,6 +151,7 @@ public class LutemonAnimation {
     public void setSlideAnimation(Animation slideAnimation) {
         this.slideAnimation = slideAnimation;
     }
+
     public Animation getSlideFromRightAnimation() {
         return slideFromRightAnimation;
     }
@@ -138,6 +159,7 @@ public class LutemonAnimation {
     public void getSlideFromRightAnimation(Animation getSlideFromRightAnimation) {
         this.slideFromRightAnimation = slideFromRightAnimation;
     }
+
     public Animation getFadeAnimation() {
         return fadeAnimation;
     }
@@ -169,6 +191,7 @@ public class LutemonAnimation {
     public void setSeqAnimation(Animation seqAnimation) {
         this.seqAnimation = seqAnimation;
     }
+
     public Animation getHitRightAnimation() {
         return hitRightAnimation;
     }
@@ -176,6 +199,7 @@ public class LutemonAnimation {
     public void setHitRightAnimation(Animation hitRightAnimation) {
         this.hitRightAnimation = hitRightAnimation;
     }
+
     public Animation getHitLeftAnimation() {
         return hitLeftAnimation;
     }
@@ -184,6 +208,7 @@ public class LutemonAnimation {
         this.hitLeftAnimation = hitLeftAnimation;
     }
 
+    // toString
     @NonNull
     @Override
     public String toString() {
@@ -199,15 +224,16 @@ public class LutemonAnimation {
                 '}';
     }
 
-    public void loserBoogie(){
-        Animation mani = new RotateAnimation(0.0f,360.0f,0.5f,0.5f);
+    public void loserBoogie() {
+        Animation mani = new RotateAnimation(0.0f, 360.0f, 0.5f, 0.5f);
 
     }
 
-    public void winningDance(){
+    public void winningDance() {
 
     }
-    public void fight(){
+
+    public void fight() {
 
     }
 }

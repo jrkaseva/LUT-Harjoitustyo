@@ -70,10 +70,13 @@ public class CreateLutemonFragment extends Fragment {
                 System.out.println("No color selected");
                 lutemon = new Lutemon("Error");
         }
+
         Home.getInstance().createLutemon(lutemon);
-        System.out.println(Home.getInstance().getLutemons());
+
+        Home.getInstance().listLutemons();
         Home.getInstance().saveLutemon(getContext(),"home.data");
-        System.out.println(Home.getInstance().getLutemons());
+
+        Home.getInstance().listLutemons();
         lutemon_name.setText("");
         Toast toast = Toast.makeText(getContext(), "Lutemon created", Toast.LENGTH_LONG);
         toast.show();

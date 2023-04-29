@@ -27,7 +27,7 @@ public class Home extends Storage{
      * @param lutemon to create
      */
     public void createLutemon(Lutemon lutemon){
-        System.out.println("Lutemon id:" + lutemon.getId());
+        System.out.println("Count of Lutemons:" + getInstance().getLutemons().size());
         getInstance().getLutemons().put(lutemon.getId(), lutemon);
 
         System.out.println("NEW LUTEMON CREATED (ID: [" + lutemon.getId() + "])");
