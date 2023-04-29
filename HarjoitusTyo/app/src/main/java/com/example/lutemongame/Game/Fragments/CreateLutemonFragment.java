@@ -61,6 +61,11 @@ public class CreateLutemonFragment extends Fragment {
         }
         Lutemon lutemon;
         String name = lutemon_name.getText().toString();
+        if (name.isEmpty()){
+            Toast t = Toast.makeText(getActivity(), "Give a name for your Lutemon", Toast.LENGTH_SHORT);
+            t.show();
+            return;
+        }
         switch (rg.getCheckedRadioButtonId()) {
             case R.id.rbWhite:
                 lutemon = new White(name);

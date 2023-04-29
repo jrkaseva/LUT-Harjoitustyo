@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameMain, new HomeFragment())
                 .commit();
-        //createTestLutemons();
+        // createTestLutemons();
     }
 
     @Override
@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createTestLutemons(){
-        // Creating default Lutemons for testing
         Home Storage = Home.getInstance();
         Storage.createLutemon(new Green("Goblin"));
         Storage.createLutemon(new Orange("Orangutan"));
@@ -121,12 +120,6 @@ public class MainActivity extends AppCompatActivity {
         Storage.createLutemon(new Black("Panther"));
         Storage.createLutemon(new Pink("Flamingo"));
         Storage.createLutemon(new White("Winter"));
-        Storage.sendToBattleField(1);
-        Storage.sendToBattleField(2);
-        Storage.sendToBattleField(3);
-        Storage.sendToBattleField(4);
-        Storage.sendToTrain(5);
-        Storage.sendToTrain(6);
     }
 
     private void loadData(){
@@ -134,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         int count = Home.getInstance().getLutemons().size();
         System.out.println("Count of Lutemons: " + count);
         Home.getInstance().listLutemons();
-        if (getHighestID() != -1) Lutemon.setIdCounter(getHighestID());
+        if (getHighestID() != -1) Lutemon.setIdCounter(getHighestID() + 1);
 
         TrainingArea.getInstance().loadLutemon(this, "gym.data");
         BattleField.getInstance().loadLutemon(this, "arena.data");

@@ -85,6 +85,7 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
             dialog.dismiss();
             Toast toast = Toast.makeText(context, "Lutemon deleted", Toast.LENGTH_SHORT);
             toast.show();
+            notifyDataSetChanged();
         });
 
 

@@ -150,12 +150,6 @@ public class BattleField extends Storage{
         }
     }
 
-    public boolean sequence(Lutemon attacker, Lutemon defender){
-        defender.defense(attacker);
-        if (defender.isAlive()) return false;
-        return true;
-    }
-
 
     /**
      * Handles end of battle

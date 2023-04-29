@@ -162,4 +162,7 @@ public abstract class Storage implements Serializable {
         return max;
     }
 
+    protected void emptyStorage(){
+        lutemons = new HashMap<>();
+    }
 }

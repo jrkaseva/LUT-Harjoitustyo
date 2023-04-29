@@ -72,14 +72,14 @@ public class Lutemon implements Serializable {
             def = 3;
             health = 12; maxHealth = 12;
             color = "Black";
-            image = R.mipmap.ic_lutemon_black_foreground;
+            image = R.mipmap.ic_lutemon_brown_foreground;
         }
         else {
             atk = 10;
             def = 3;
             health = 20; maxHealth = 20;
             color = "Black";
-            image = R.mipmap.ic_lutemon_black_foreground;
+            image = R.mipmap.ic_lutemon_brown_foreground;
         }
     }
 
@@ -132,7 +132,7 @@ public class Lutemon implements Serializable {
             System.out.println("Thread error");
             throw new RuntimeException(e);
         }*/
-        return String.format("%s (%d/%d) | %s (%d/%d)", attacker.name, damage,attacker.maxHealth, name, health, maxHealth);
+        return String.format("%s (%d) | %s (%d/%d)", attacker.name, damage, name, health, maxHealth);
     }
 
     /**
@@ -244,18 +244,6 @@ public class Lutemon implements Serializable {
     public void addLoss(){
         losses++;
     }
-
-// --Commented out by Inspection START (18.4.2023 12.20):
-//    /**
-//     * Sets the Lutemon as if it was just created
-//     */
-//    public void resetLutemon(){
-//        wins = 0;
-//        losses = 0;
-//        experience = 0;
-//        heal();
-//    }
-// --Commented out by Inspection STOP (18.4.2023 12.20)
 
     /**
      * true if Lutemon has been selected in a RecyclerView
