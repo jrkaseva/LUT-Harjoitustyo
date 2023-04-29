@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         layoutButtons = findViewById(R.id.linearLayoutMain);
 
         loadData();
+        deselectAll();
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {
@@ -189,5 +190,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (BadIdException e) {
             System.out.println(e.getMessage() + "[HOME]");
         }
+    }
+
+    public void deselectAll(){
+        Home.getInstance().deselectAll();
+        BattleField.getInstance().deselectAll();
+        TrainingArea.getInstance().deselectAll();
     }
 }

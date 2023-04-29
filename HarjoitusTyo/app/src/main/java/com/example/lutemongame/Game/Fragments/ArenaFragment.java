@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Creatures.Lutemon;
@@ -74,7 +75,11 @@ public class ArenaFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_fight);
         ArrayList<Integer> id_list = getCheckedLutemons();
 
-        if (id_list.size() != 2) return;
+        if (id_list.size() != 2) {
+            Toast t = Toast.makeText(getActivity(), "Choose 2 Lutemons", Toast.LENGTH_SHORT);
+            t.show();
+            return;
+        }
 
         Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
         Lutemon defender = STORAGE.getLutemons().get(id_list.get(1));

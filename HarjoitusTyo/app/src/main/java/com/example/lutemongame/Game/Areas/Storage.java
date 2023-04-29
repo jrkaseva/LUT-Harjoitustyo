@@ -165,4 +165,9 @@ public abstract class Storage implements Serializable {
     protected void emptyStorage(){
         lutemons = new HashMap<>();
     }
+    public void deselectAll(){
+        for(int i : lutemons.keySet()){
+            lutemons.get(i).select(false);
+        }
+    }
 }
