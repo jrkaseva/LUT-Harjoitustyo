@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 import com.example.lutemongame.ShowLutemonAdapter;
 
@@ -39,7 +40,7 @@ public class HomeFragment extends Fragment {
         rv = view.findViewById(R.id.idRVHome);
         rg = view.findViewById(R.id.rgSendFromHome);
         Button transfer = view.findViewById(R.id.btnHomeTransferLutemons);
-        transfer.setOnClickListener(v -> sendTo());
+        transfer.setOnClickListener(v -> ((MainActivity)getActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
         Button createLutemon = view.findViewById(R.id.btnTrainLutemon);
         createLutemon.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameMain, new CreateLutemonFragment())
@@ -53,25 +54,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    public void sendTo(){
-        switch (rg.getCheckedRadioButtonId()) {
-            case R.id.rbSendArena:
-                for(int i : getCheckedLutemons()){
-                    STORAGE.sendToBattleField(i);
-                }
-                break;
-            case R.id.rbSendGym:
-                for(int i : getCheckedLutemons()){
-                    STORAGE.sendToTrain(i);
-                }
-                break;
-            default:
-                System.out.println("No destination selected");
-        }
-        rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
     }
 
     public ArrayList<Integer> getCheckedLutemons(){

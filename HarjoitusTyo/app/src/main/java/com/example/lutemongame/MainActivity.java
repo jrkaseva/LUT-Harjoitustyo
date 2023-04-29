@@ -1,19 +1,24 @@
 package com.example.lutemongame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.Game.Areas.Storage;
 import com.example.lutemongame.Game.Areas.TrainingArea;
 import com.example.lutemongame.Game.Creatures.Black;
 import com.example.lutemongame.Game.Creatures.Green;
+import com.example.lutemongame.Game.Creatures.Lutemon;
 import com.example.lutemongame.Game.Creatures.Orange;
 import com.example.lutemongame.Game.Creatures.Pink;
 import com.example.lutemongame.Game.Creatures.White;
@@ -21,28 +26,19 @@ import com.example.lutemongame.Game.Fragments.ArenaFragment;
 import com.example.lutemongame.Game.Fragments.GymFragment;
 import com.example.lutemongame.Game.Fragments.HomeFragment;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private View decorView;
     private boolean doubleBackToExitPressedOnce = false;
     private LinearLayout layoutButtons;
-    private boolean opening = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layoutButtons = findViewById(R.id.linearLayoutMain);
 
-        if (opening) {
-            // Load Data
-            Home.getInstance().loadLutemon(this, "home.data");
-            int id = Home.getInstance().getLutemons().size();
-            System.out.println("Count of Lutemons: " + id);
-            Home.getInstance().listLutemons();
-
-            TrainingArea.getInstance().loadLutemon(this, "gym.data");
-            BattleField.getInstance().loadLutemon(this, "arena.data");
-            opening = false;
-        }
+        loadData();
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(visibility -> {
@@ -136,11 +132,54 @@ public class MainActivity extends AppCompatActivity {
         Storage.sendToTrain(6);
     }
 
-    @Override
-    protected void onDestroy() {
+    protected void loadData(){
+        Home.getInstance().loadLutemon(this, "home.data");
+        int count = Home.getInstance().getLutemons().size();
+        System.out.println("Count of Lutemons: " + count);
+        Home.getInstance().listLutemons();
+        Lutemon.setIdCounter(getHighestID());
+
+        TrainingArea.getInstance().loadLutemon(this, "gym.data");
+        BattleField.getInstance().loadLutemon(this, "arena.data");
+    }
+
+    public void saveData(){
         TrainingArea.getInstance().saveLutemon(this,"gym.data");
         BattleField.getInstance().saveLutemon(this, "arena.data");
         Home.getInstance().saveLutemon(this, "home.data");
-        super.onDestroy();
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    public void sendTo(RadioGroup rg, Storage storage, RecyclerView rv, ArrayList<Integer> arr){
+        switch (rg.getCheckedRadioButtonId()) {
+            case R.id.rbSendHome:
+                for(int i : arr){
+                    storage.sendToHome(i);
+                }
+                break;
+            case R.id.rbSendGym:
+                for(int i : arr){
+                    storage.sendToTrain(i);
+                }
+                break;
+            case R.id.rbSendArena:
+                for(int i : arr){
+                    storage.sendToBattleField(i);
+                }
+                break;
+            default:
+                System.out.println("No destination selected");
+        }
+        rv.setAdapter(new ShowLutemonAdapter(this, storage.getLutemons()));
+        saveData();
+    }
+
+    private int getHighestID() {
+        int max = Home.getInstance().getHighestID();
+        if (BattleField.getInstance().getHighestID() > max)
+            max = BattleField.getInstance().getHighestID();
+        if (TrainingArea.getInstance().getHighestID() > max)
+            max = TrainingArea.getInstance().getHighestID();
+        return max;
     }
 }

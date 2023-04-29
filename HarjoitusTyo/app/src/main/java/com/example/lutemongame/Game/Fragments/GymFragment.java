@@ -22,24 +22,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lutemongame.Game.Areas.TrainingArea;
 import com.example.lutemongame.Game.Creatures.Lutemon;
-import com.example.lutemongame.Game.Creatures.TrainingOpponentEasy;
-import com.example.lutemongame.Game.Creatures.TrainingOpponentHard;
 import com.example.lutemongame.Game.LutemonAnimation;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 import com.example.lutemongame.ShowLutemonAdapter;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class GymFragment extends Fragment {
     private final TrainingArea STORAGE = TrainingArea.getInstance();
     private RecyclerView rv;
     private RadioGroup rg;
     private boolean swap = false;
-    private Lutemon easy = new Lutemon("Trainer easy", true);
-    private Lutemon hard = new Lutemon("Trainer hard", false);
+    private final Lutemon easy = new Lutemon("Trainer easy", true);
+    private final Lutemon hard = new Lutemon("Trainer hard", false);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,32 +50,12 @@ public class GymFragment extends Fragment {
         rv = view.findViewById(R.id.idRVGym);
         rg = view.findViewById(R.id.rgSendFromGym);
         Button transfer = view.findViewById(R.id.btnGymTransferLutemons);
-        transfer.setOnClickListener(v -> sendTo());
+        transfer.setOnClickListener(v -> ((MainActivity) requireActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
         Button train = view.findViewById(R.id.btnTrainLutemon);
         train.setOnClickListener(v -> showChooseDifficulty());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
-
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    public void sendTo(){
-        switch (rg.getCheckedRadioButtonId()) {
-            case R.id.rbSendArena:
-                for(int i : getCheckedLutemons()){
-                    STORAGE.sendToBattleField(i);
-                }
-                break;
-            case R.id.rbSendHome:
-                for(int i : getCheckedLutemons()){
-                    STORAGE.sendToHome(i);
-                }
-                break;
-            default:
-                System.out.println("No destination selected");
-        }
-        rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
     }
 
     public ArrayList<Integer> getCheckedLutemons(){
@@ -111,6 +88,7 @@ public class GymFragment extends Fragment {
             }
         });
     }
+    @SuppressLint("NonConstantResourceId")
     public int getDifficulty(Dialog dialog){
         RadioGroup rgDifficult = dialog.findViewById(R.id.rgChooseDifficulty);
         int difficulty = -1;
@@ -134,8 +112,7 @@ public class GymFragment extends Fragment {
         ArrayList<Integer> id_list = getCheckedLutemons();
 
         Lutemon attacker = STORAGE.getLutemons().get(id_list.get(0));
-        boolean trainEasy = true;
-        if (difficulty == 1) trainEasy = false;
+        boolean trainEasy = difficulty != 1;
 
         Button btnExitTraining = dialog.findViewById(R.id.btnExitTraining);
         dialog.show();
@@ -144,7 +121,7 @@ public class GymFragment extends Fragment {
             dialog.dismiss();
             rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         });
-        attacker.select(false);
+        Objects.requireNonNull(attacker).select(false);
         if(trainEasy) fightTraining(attacker, easy, dialog, difficulty);
         else fightTraining(attacker, hard, dialog, difficulty);
     }
@@ -162,13 +139,8 @@ public class GymFragment extends Fragment {
         TextView info = dialog.findViewById(R.id.textViewFightTraining);
         Button round = dialog.findViewById(R.id.btnRoundTraining);
 
-        Lutemon leftLutemon = attacker;
-        Lutemon rightLutemon = defender;
-        round.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roundOfFightTraining(dialog, leftLutemon, rightLutemon, left, right, info, difficulty)) round.setVisibility(View.GONE);
-            }
+        round.setOnClickListener(v -> {
+            if(roundOfFightTraining(dialog, attacker, defender, left, right, info, difficulty)) round.setVisibility(View.GONE);
         });
 
     }
@@ -185,13 +157,13 @@ public class GymFragment extends Fragment {
                 attacker.gainExp(2);
                 break;
         }
+        ((MainActivity) requireActivity()).saveData();
     }
 
     public boolean roundOfFightTraining(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info, int difficulty){
 
         LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
         Lutemon leftLutemon = attacker;
-        Timer timer = new Timer();
         Handler handler = new Handler(Looper.getMainLooper());
 
         if (swap){
@@ -224,7 +196,7 @@ public class GymFragment extends Fragment {
         }
 
         String addToText = defender.defense(attacker);
-        Runnable addText = () -> info.setText(info.getText() + "\n" + addToText);
+        @SuppressLint("SetTextI18n") Runnable addText = () -> info.setText(info.getText() + "\n" + addToText);
         handler.postDelayed(addText, 1400);
 
         if (defender.isAlive()) {
@@ -233,7 +205,7 @@ public class GymFragment extends Fragment {
             TextView winner = dialog.findViewById(R.id.textViewWinnerTraining);
             Lutemon attacker1 = attacker;
             endFightTraining(defender, attacker, difficulty);
-            Runnable end = () -> {
+            @SuppressLint("SetTextI18n") Runnable end = () -> {
                 winner.setText(attacker1.getName() + " is the winner!");
                 dialog.findViewById(R.id.btnExitTraining).setVisibility(View.VISIBLE);
             };

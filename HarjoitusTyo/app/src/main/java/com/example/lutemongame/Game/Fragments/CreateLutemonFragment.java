@@ -14,17 +14,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
+import com.example.lutemongame.Game.Areas.TrainingArea;
 import com.example.lutemongame.Game.Creatures.Black;
 import com.example.lutemongame.Game.Creatures.Green;
 import com.example.lutemongame.Game.Creatures.Lutemon;
 import com.example.lutemongame.Game.Creatures.Orange;
 import com.example.lutemongame.Game.Creatures.Pink;
 import com.example.lutemongame.Game.Creatures.White;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 
 public class CreateLutemonFragment extends Fragment {
-
+    private final int MAX_LUTEMONS = 10;
     private TextView lutemon_name;
     private RadioGroup rg;
 
@@ -48,6 +51,11 @@ public class CreateLutemonFragment extends Fragment {
 
     @SuppressLint("NonConstantResourceId")
     public void createLutemon(){
+        if (amountOfLutemons() >= MAX_LUTEMONS){
+            Toast toast = Toast.makeText(getContext(), "Max amount of Lutemons created", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
         Lutemon lutemon;
         String name = lutemon_name.getText().toString();
         switch (rg.getCheckedRadioButtonId()) {
@@ -73,12 +81,13 @@ public class CreateLutemonFragment extends Fragment {
 
         Home.getInstance().createLutemon(lutemon);
 
-        Home.getInstance().listLutemons();
-        Home.getInstance().saveLutemon(getContext(),"home.data");
+        ((MainActivity)getActivity()).saveData();
 
-        Home.getInstance().listLutemons();
         lutemon_name.setText("");
         Toast toast = Toast.makeText(getContext(), "Lutemon created", Toast.LENGTH_LONG);
         toast.show();
+    }
+    public int amountOfLutemons() {
+        return Home.getInstance().getLutemons().size() + TrainingArea.getInstance().getLutemons().size() + BattleField.getInstance().getLutemons().size();
     }
 }

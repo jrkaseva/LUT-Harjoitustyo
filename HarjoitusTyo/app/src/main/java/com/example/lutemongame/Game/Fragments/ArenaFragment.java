@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Creatures.Lutemon;
 import com.example.lutemongame.Game.LutemonAnimation;
+import com.example.lutemongame.MainActivity;
 import com.example.lutemongame.R;
 import com.example.lutemongame.ShowLutemonAdapter;
 
@@ -48,31 +49,12 @@ public class ArenaFragment extends Fragment {
         rv = view.findViewById(R.id.idRVArena);
         rg = view.findViewById(R.id.rgSendFromArena);
         Button transfer = view.findViewById(R.id.btnArenaTransferLutemons);
-        transfer.setOnClickListener(v -> sendTo());
+        transfer.setOnClickListener(v -> ((MainActivity)getActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
         Button fight = view.findViewById(R.id.btnBattleLutemon);
         fight.setOnClickListener(v -> showLutemonFight());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    public void sendTo(){
-        switch (rg.getCheckedRadioButtonId()) {
-            case R.id.rbSendHome:
-                for(int i : getCheckedLutemons()){
-                    STORAGE.sendToHome(i);
-                }
-                break;
-            case R.id.rbSendGym:
-                for(int i : getCheckedLutemons()){
-                    STORAGE.sendToTrain(i);
-                }
-                break;
-            default:
-                System.out.println("No destination selected");
-        }
-        rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
     }
 
     public ArrayList<Integer> getCheckedLutemons(){
@@ -142,6 +124,7 @@ public class ArenaFragment extends Fragment {
             attacker.heal();
             defender.heal();
         }
+        ((MainActivity)getActivity()).saveData();
     }
 
     public boolean roundOfFight(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info){

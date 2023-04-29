@@ -297,5 +297,7 @@ public class Lutemon implements Serializable {
         return image;
     }
 
-
+    public static void setIdCounter(int i){
+        idCounter = i;
+    }
 }

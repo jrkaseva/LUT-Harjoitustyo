@@ -26,7 +26,7 @@ public class TrainingArea extends Storage {
         name = "Gym";
     }
 
-    /*public void trainingFight(Lutemon lutemon_1, Lutemon lutemon_2){
+    public void trainingFight(Lutemon lutemon_1, Lutemon lutemon_2){
         if(lutemon_1 == null || lutemon_2 == null){
             System.out.println("Error in starting battle with Lutemons: null Lutemon");
             return;
@@ -66,5 +66,5 @@ public class TrainingArea extends Storage {
         attacker.gainExp(1);
         attacker.heal();
         defender.heal();
-    }*/
+    }
 }
