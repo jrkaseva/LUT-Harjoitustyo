@@ -30,6 +30,7 @@ public class CreateLutemonFragment extends Fragment {
     private final int MAX_LUTEMONS = 10;
     private TextView lutemon_name;
     private RadioGroup rg;
+    private TextView lutemon_count;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class CreateLutemonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_lutemon, container, false);
         lutemon_name = view.findViewById(R.id.idEditLutemonName);
         rg = view.findViewById(R.id.rgColor);
+        lutemon_count = view.findViewById(R.id.tvAmountOfLutemons);
+        lutemon_count.setText(amountOfLutemons() + "/" + MAX_LUTEMONS);
         Button btnAdd = view.findViewById(R.id.btnAddNewLutemon);
         btnAdd.setOnClickListener(v -> createLutemon());
         Button btnCancel = view.findViewById(R.id.btnCancel);
@@ -84,8 +87,9 @@ public class CreateLutemonFragment extends Fragment {
         ((MainActivity)getActivity()).saveData();
 
         lutemon_name.setText("");
-        Toast toast = Toast.makeText(getContext(), "Lutemon created", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getContext(), "Lutemon created", Toast.LENGTH_SHORT);
         toast.show();
+        lutemon_count.setText(amountOfLutemons() + "/" + MAX_LUTEMONS);
     }
     public int amountOfLutemons() {
         return Home.getInstance().getLutemons().size() + TrainingArea.getInstance().getLutemons().size() + BattleField.getInstance().getLutemons().size();

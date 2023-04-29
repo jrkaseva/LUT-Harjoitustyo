@@ -92,6 +92,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pink" />
+                <TextView
+                    android:layout_marginStart="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Lutemons existing:">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvAmountOfLutemons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="textEnd"
+                    android:paddingEnd="40dp"
+                    android:text="X/X">
+                </TextView>
+
             </RadioGroup>
 
         </LinearLayout>
@@ -109,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:minHeight="32dp"
-            android:text="Cancel"
+            android:text="Back"
             android:textSize="24sp" />
 
     </LinearLayout>
