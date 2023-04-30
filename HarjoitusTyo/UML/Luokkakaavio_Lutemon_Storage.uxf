@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>280</y>
+      <x>434</x>
+      <y>259</y>
       <w>224</w>
       <h>217</h>
     </coordinates>
@@ -35,8 +35,8 @@ _- serialVersionUID: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>392</x>
-      <y>532</y>
+      <x>490</x>
+      <y>511</y>
       <w>147</w>
       <h>63</h>
     </coordinates>
@@ -51,8 +51,8 @@ _+ getInstance(): Home_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>392</x>
-      <y>609</y>
+      <x>490</x>
+      <y>588</y>
       <w>147</w>
       <h>49</h>
     </coordinates>
@@ -66,8 +66,8 @@ _+ getInstance(): BattleField_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>392</x>
-      <y>693</y>
+      <x>490</x>
+      <y>672</y>
       <w>147</w>
       <h>49</h>
     </coordinates>
@@ -81,8 +81,8 @@ _+ getInstance(): TrainingArea_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>357</x>
-      <y>490</y>
+      <x>455</x>
+      <y>469</y>
       <w>49</w>
       <h>252</h>
     </coordinates>
@@ -92,8 +92,8 @@ _+ getInstance(): TrainingArea_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>637</y>
+      <x>154</x>
+      <y>616</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -105,8 +105,8 @@ _+ getInstance(): TrainingArea_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>210</y>
+      <x>154</x>
+      <y>189</y>
       <w>217</w>
       <h>308</h>
     </coordinates>
@@ -143,8 +143,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>679</y>
+      <x>154</x>
+      <y>658</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -156,8 +156,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>595</y>
+      <x>154</x>
+      <y>574</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -169,8 +169,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>763</y>
+      <x>154</x>
+      <y>742</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -182,8 +182,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>721</y>
+      <x>154</x>
+      <y>700</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -195,8 +195,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>511</y>
+      <x>266</x>
+      <y>490</y>
       <w>84</w>
       <h>287</h>
     </coordinates>
@@ -206,74 +206,74 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>735</y>
+      <x>266</x>
+      <y>714</y>
       <w>84</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>168</x>
-      <y>693</y>
-      <w>84</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>168</x>
-      <y>644</y>
-      <w>84</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>168</x>
-      <y>609</y>
-      <w>84</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>357</x>
-      <y>644</y>
-      <w>49</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>357</x>
-      <y>560</y>
-      <w>49</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>266</x>
-      <y>406</y>
+      <y>672</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>623</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>588</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>623</y>
+      <w>49</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>539</y>
+      <w>49</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>364</x>
+      <y>385</y>
       <w>84</w>
       <h>28</h>
     </coordinates>
@@ -285,9 +285,240 @@ m2=0..10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>987</x>
-      <y>462</y>
-      <w>217</w>
+      <x>1092</x>
+      <y>455</y>
+      <w>280</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>ShowLutemonAdapter
+--
+- context: Context
+- lutemons: HashMap&lt;int, Lutemon&gt;
+- id_list: int[0..10]
+--
++ ShowLutemonAdapter(Context, HashMap&lt;Integer, Lutemon&gt;)
++ onCreateViewHolder(ViewGroup, int): LutemonViewHolder
++ onBindViewHolder(LutemonViewHolder, int)
++ showLutemonInfo(pos: int, v: View)
++ getItemCount(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>665</y>
+      <w>259</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Game.Fragments::HomeFragment
+--
+- STORAGE: Home
+- rv: RecyclerView
+- rg: RadioGroup
+--
++ onCreate(savedInstanceState: Bundle)
++ onCreateView(LayoutInflater, ViewGroup, Bundle): View
++ getCheckedLutemons(): int[0..10]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>490</y>
+      <w>259</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Game.Fragments::ArenaFragment
+--
+- STORAGE: BattleField
+- rv: RecyclerView
+- rg: RadioGroup
+- swap: boolean
+--
++ onCreate(savedInstanceState: Bundle)
++ onCreateView(LayoutInflater, ViewGroup, Bundle): View
++ getCheckedLutemons(): int[0..10]
++ showLutemonFight()
++ fight(Lutemon, Lutemon, Dialog)
++ endFight(Lutemon, Lutemon, boolean)
++ roundOfFight(Dialog, Lutemon, Lutemon,
+ImageView, ImageView, TextView): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>259</y>
+      <w>259</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Game.Fragments::GymFragment
+--
+- STORAGE: TrainingArea
+- rv: RecyclerView
+- rg: RadioGroup
+- swap: boolean
+- easy: Lutemon
+- hard: Lutemon
+--
++ onCreate(savedInstanceState: Bundle)
++ onCreateView(LayoutInflater, ViewGroup, Bundle): View
++ getCheckedLutemons(): int[0..10]
++ showChooseDifficulty()
++ getDifficulty(dialog: Dialog): int
++ showTrainingArea(difficulty: int)
++ fightTraining(Lutemon, Lutemon, Dialog)
++ endFightTraining(Lutemon, Lutemon)
++ roundOfFightTraining(Dialog, Lutemon, Lutemon,
+ImageView, ImageView, TextView): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>119</y>
+      <w>259</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Game.Fragments::CreateLutemonFragment
+--
+- MAX_LUTEMONS: int
+- lutemon_name: TextView
+- rg: RadioGroup
+- lutemon_count: TextView
+--
+- createLutemon()
+- amountOfLutemons(): int
++ onCreate(savedInstanceState: Bundle)
++ onCreateView(LayoutInflater, ViewGroup, Bundle): View
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>196</y>
+      <w>98</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;70.0;70.0;70.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>441</y>
+      <w>63</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>238</y>
+      <w>63</w>
+      <h>525</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;730.0;70.0;730.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>441</y>
+      <w>147</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;10.0;110.0;10.0;110.0;140.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>686</y>
+      <w>147</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;80.0;110.0;80.0;110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>602</y>
+      <w>147</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>434</x>
+      <y>210</y>
+      <w>133</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>Game.Areas::BadIdException
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>98</x>
+      <y>98</y>
+      <w>588</w>
+      <h>735</h>
+    </coordinates>
+    <panel_attributes>Backend classes</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>749</x>
+      <y>98</y>
+      <w>658</w>
+      <h>735</h>
+    </coordinates>
+    <panel_attributes>Frontend classes</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>574</y>
+      <w>63</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1099</x>
+      <y>140</y>
+      <w>231</w>
       <h>196</h>
     </coordinates>
     <panel_attributes>MainActivity
@@ -313,211 +544,60 @@ m2=0..10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>686</x>
-      <y>686</y>
-      <w>231</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>Game.Fragments::HomeFragment
---
-- STORAGE: Home
-- rv: RecyclerView
-- rg: RadioGroup
---
-+ onCreate(savedInstanceState: Bundle)
-+ onCreateView(LayoutInflater, ViewGroup, Bundle): View
-+ getCheckedLutemons(): int[0..10]
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>686</x>
-      <y>511</y>
-      <w>231</w>
-      <h>161</h>
-    </coordinates>
-    <panel_attributes>Game.Fragments::ArenaFragment
---
-- STORAGE: BattleField
-- rv: RecyclerView
-- rg: RadioGroup
-- swap: boolean
---
-+ onCreate(savedInstanceState: Bundle)
-+ onCreateView(LayoutInflater, ViewGroup, Bundle): View
-+ getCheckedLutemons(): int[0..10]
-+ showLutemonFight()
-+ fight(Lutemon, Lutemon, Dialog)
-+ endFight(Lutemon, Lutemon, boolean)
-+ roundOfFight(Dialog, Lutemon, Lutemon,
-ImageView, ImageView, TextView): boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>686</x>
-      <y>280</y>
-      <w>231</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>Game.Fragments::GymFragment
---
-- STORAGE: TrainingArea
-- rv: RecyclerView
-- rg: RadioGroup
-- swap: boolean
-- easy: Lutemon
-- hard: Lutemon
---
-+ onCreate(savedInstanceState: Bundle)
-+ onCreateView(LayoutInflater, ViewGroup, Bundle): View
-+ getCheckedLutemons(): int[0..10]
-+ showChooseDifficulty()
-+ getDifficulty(dialog: Dialog): int
-+ showTrainingArea(difficulty: int)
-+ fightTraining(Lutemon, Lutemon, Dialog, int)
-+ endFightTraining(Lutemon, Lutemon, int)
-+ roundOfFightTraining(Dialog, Lutemon, Lutemon,
-ImageView, ImageView, TextView, int): boolean
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>686</x>
-      <y>147</y>
-      <w>238</w>
+      <x>1092</x>
+      <y>609</y>
+      <w>280</w>
       <h>119</h>
     </coordinates>
-    <panel_attributes>Game.Fragments::CreateLutemonFragment
+    <panel_attributes>LutemonViewHolder
 --
-- MAX_LUTEMONS: int
-- lutemon_name: TextView
-- rg: RadioGroup
-- lutemon_count: TextView
+- lutemonImage: ImageView
+- lutemonInfo: ImageView
+- lutemonName: TextView
+- lutemonColor: TextView
+- lutemonWins: TextView
+- lutemonLosses: TextView
+- cb: CheckBox
 --
-- createLutemon()
-- amountOfLutemons(): int
-+ onCreate(savedInstanceState: Bundle)
-+ onCreateView(LayoutInflater, ViewGroup, Bundle): View
-
-</panel_attributes>
++ LutemonViewHolder(View)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>917</x>
-      <y>217</y>
-      <w>84</w>
-      <h>336</h>
+      <x>1225</x>
+      <y>567</y>
+      <w>21</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>100.0;460.0;30.0;460.0;30.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLNote</id>
     <coordinates>
-      <x>910</x>
-      <y>462</y>
-      <w>42</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>910</x>
-      <y>532</y>
-      <w>42</w>
-      <h>252</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;340.0;40.0;340.0;40.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>532</x>
-      <y>462</y>
-      <w>168</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>220.0;10.0;110.0;10.0;110.0;140.0;10.0;140.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>532</x>
-      <y>707</y>
-      <w>168</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>220.0;80.0;110.0;80.0;110.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>532</x>
-      <y>623</y>
-      <w>168</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>220.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>336</x>
-      <y>231</y>
+      <x>1239</x>
+      <y>413</y>
       <w>133</w>
-      <h>28</h>
+      <h>35</h>
     </coordinates>
-    <panel_attributes>Game.Areas::BadIdException
---
---</panel_attributes>
+    <panel_attributes>Adapter used in fragments'
+RecyclerView-object.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>0</x>
-      <y>119</y>
-      <w>588</w>
-      <h>735</h>
+      <x>462</x>
+      <y>140</y>
+      <w>133</w>
+      <h>63</h>
     </coordinates>
-    <panel_attributes>Backend classes</panel_attributes>
+    <panel_attributes>Exception used while trying
+to get a Lutemonwith an ID,
+which isn'tin the dataset.
+Thrown in:
+Storage.getLutemon()</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>651</x>
-      <y>119</y>
-      <w>602</w>
-      <h>735</h>
-    </coordinates>
-    <panel_attributes>Frontend classes</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>910</x>
-      <y>595</y>
-      <w>42</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
   </element>
 </diagram>
