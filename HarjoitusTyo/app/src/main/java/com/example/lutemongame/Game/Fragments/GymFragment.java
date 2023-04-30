@@ -105,6 +105,7 @@ public class GymFragment extends Fragment {
         }
         return difficulty;
     }
+
     public void showTrainingArea(int difficulty){
         Dialog dialog = new Dialog(getActivity());
         dialog.setCancelable(false);
@@ -122,11 +123,11 @@ public class GymFragment extends Fragment {
             rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         });
         Objects.requireNonNull(attacker).select(false);
-        if(trainEasy) fightTraining(attacker, easy, dialog, difficulty);
-        else fightTraining(attacker, hard, dialog, difficulty);
+        if(trainEasy) fightTraining(attacker, easy, dialog);
+        else fightTraining(attacker, hard, dialog);
     }
 
-    public void fightTraining(Lutemon attacker, Lutemon defender, Dialog dialog, int difficulty){
+    public void fightTraining(Lutemon attacker, Lutemon defender, Dialog dialog){
         ImageView left = dialog.findViewById(R.id.imageViewAttackerTraining);
         ImageView right = dialog.findViewById(R.id.imageViewDefenderTraining);
         left.setImageResource(attacker != null ? attacker.getImage() : 0);
@@ -140,27 +141,21 @@ public class GymFragment extends Fragment {
         Button round = dialog.findViewById(R.id.btnRoundTraining);
 
         round.setOnClickListener(v -> {
-            if(roundOfFightTraining(dialog, attacker, defender, left, right, info, difficulty)) round.setVisibility(View.GONE);
+            if(roundOfFightTraining(dialog, attacker, defender, left, right, info)) round.setVisibility(View.GONE);
         });
 
     }
 
-    public void endFightTraining(Lutemon defender, Lutemon attacker, int difficulty) {
+    public void endFightTraining(Lutemon defender, Lutemon attacker) {
         attacker.heal();
         defender.heal();
         if(attacker.equals(easy) || attacker.equals(hard)) return;
-        switch (difficulty){
-            case 0:
-                attacker.gainExp(1);
-                break;
-            case 1:
-                attacker.gainExp(2);
-                break;
-        }
+        if(defender.equals(easy)) attacker.gainExp(1);
+        else attacker.gainExp(2);
         ((MainActivity) requireActivity()).saveData();
     }
 
-    public boolean roundOfFightTraining(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info, int difficulty){
+    public boolean roundOfFightTraining(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info){
 
         LutemonAnimation animation = new LutemonAnimation(dialog.getContext());
         Lutemon leftLutemon = attacker;
@@ -176,23 +171,9 @@ public class GymFragment extends Fragment {
             left.startAnimation(animation.getHitLeftAnimation());
             right.startAnimation(animation.getRotateAnimation());
 
-/*            TimerTask attack = new TimerTask() {
-                @Override
-                public void run() {
-                    right.startAnimation(animation.getRotateAnimation());
-                }
-            };
-            timer.schedule(attack, 450);*/
         } else {
             right.startAnimation(animation.getHitRightAnimation());
             left.startAnimation(animation.getRotateAnimation());
-           /* TimerTask attack = new TimerTask() {
-                @Override
-                public void run() {
-                    left.startAnimation(animation.getRotateAnimation());
-                }
-            };
-            timer.schedule(attack, 450);*/
         }
 
         String addToText = defender.defense(attacker);
@@ -204,7 +185,7 @@ public class GymFragment extends Fragment {
         } else {
             TextView winner = dialog.findViewById(R.id.textViewWinnerTraining);
             Lutemon attacker1 = attacker;
-            endFightTraining(defender, attacker, difficulty);
+            endFightTraining(defender, attacker);
             @SuppressLint("SetTextI18n") Runnable end = () -> {
                 winner.setText(attacker1.getName() + " is the winner!");
                 dialog.findViewById(R.id.btnExitTraining).setVisibility(View.VISIBLE);

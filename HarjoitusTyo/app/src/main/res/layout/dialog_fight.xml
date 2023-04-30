@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/textViewInfo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#57ccaa">
+    android:background="#57ccaa"
+    tools:ignore="Overdraw">
 
     <Button
         android:id="@+id/btnExit"
@@ -29,7 +29,7 @@
             android:id="@+id/imageViewAttack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50sp"
+            android:layout_marginEnd="50sp"
             android:contentDescription="@string/attacker_image"
             app:srcCompat="@mipmap/ic_lutemon_pink_foreground" />
 
@@ -49,7 +49,9 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Attack" />
+        android:text="Attack"
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textViewWinner"
@@ -63,6 +65,7 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:text="ATTACKER (ATK) | DEFENDER (HP)\n----------------------------------------------------------"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

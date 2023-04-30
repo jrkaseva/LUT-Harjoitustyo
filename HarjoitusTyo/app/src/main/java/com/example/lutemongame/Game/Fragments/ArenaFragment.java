@@ -1,7 +1,5 @@
 package com.example.lutemongame.Game.Fragments;
 
-import static java.util.concurrent.TimeUnit.*;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,7 +12,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -50,7 +47,7 @@ public class ArenaFragment extends Fragment {
         rv = view.findViewById(R.id.idRVArena);
         rg = view.findViewById(R.id.rgSendFromArena);
         Button transfer = view.findViewById(R.id.btnArenaTransferLutemons);
-        transfer.setOnClickListener(v -> ((MainActivity)getActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
+        transfer.setOnClickListener(v -> ((MainActivity) requireActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
         Button fight = view.findViewById(R.id.btnBattleLutemon);
         fight.setOnClickListener(v -> showLutemonFight());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -91,8 +88,8 @@ public class ArenaFragment extends Fragment {
             dialog.dismiss();
             rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         });
-        attacker.select(false);
-        defender.select(false);
+        Objects.requireNonNull(attacker).select(false);
+        Objects.requireNonNull(defender).select(false);
 
         fight(attacker, defender, dialog);
     }
@@ -106,13 +103,8 @@ public class ArenaFragment extends Fragment {
         TextView info = dialog.findViewById(R.id.textViewFight);
         Button round = dialog.findViewById(R.id.btnRound);
 
-        Lutemon leftLutemon = attacker;
-        Lutemon rightLutemon = defender;
-        round.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roundOfFight(dialog, leftLutemon, rightLutemon, left, right, info)) round.setVisibility(View.GONE);
-            }
+        round.setOnClickListener(v -> {
+            if(roundOfFight(dialog, attacker, defender, left, right, info)) round.setVisibility(View.GONE);
         });
 
     }
@@ -131,9 +123,10 @@ public class ArenaFragment extends Fragment {
             attacker.heal();
             defender.heal();
         }
-        ((MainActivity)getActivity()).saveData();
+        ((MainActivity) requireActivity()).saveData();
     }
 
+    @SuppressLint("SetTextI18n")
     public boolean roundOfFight(Dialog dialog, Lutemon attacker, Lutemon defender, ImageView left, ImageView right, TextView info){
 
         LutemonAnimation animation = new LutemonAnimation(dialog.getContext(),attacker);

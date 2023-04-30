@@ -1,6 +1,5 @@
 package com.example.lutemongame.Game.Areas;
 
-import java.io.File;
 import java.io.Serializable;
 import android.content.Context;
 
@@ -8,26 +7,29 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Objects;
+
 import com.example.lutemongame.Game.Creatures.Lutemon;
 
 public abstract class Storage implements Serializable {
-    private static final long serialVersionUID = 1234567;
+    private static final long serialVersionUID = 1234567L;
     protected String name;
     protected HashMap<Integer, Lutemon> lutemons = new HashMap<>();
 
     /**
-     * @return Hashmap of Lutemons with their ID and themselves (<int ID, Lutemon lutemon>)
+     * @return Hashmap of Lutemons with their ID and themselves (<int ID, Lutemon
+     *         lutemon>)
      */
-    public HashMap<Integer, Lutemon> getLutemons(){
+    public HashMap<Integer, Lutemon> getLutemons() {
         return lutemons;
     }
 
     /**
      * Lists all the Lutemons in the hashmap
      */
-    public void listLutemons(){
+    public void listLutemons() {
         System.out.println("Lutemons in [" + name + "]:");
-        for (int i : lutemons.keySet()){
+        for (int i : lutemons.keySet()) {
             System.out.println(lutemons.get(i));
         }
     }
@@ -36,17 +38,19 @@ public abstract class Storage implements Serializable {
      * @param id of target Lutemon
      * @return Lutemon with the ID of id
      */
-    public Lutemon getLutemon(int id) throws BadIdException{
-        if(checkIdExists(id)) return lutemons.get(id);
+    public Lutemon getLutemon(int id) throws BadIdException {
+        if (checkIdExists(id))
+            return lutemons.get(id);
         throw new BadIdException("No Lutemon with ID: " + id);
     }
 
     /**
      * @param id lutemon to be sent to Home
      */
-    public void sendToHome(int id){
+    public void sendToHome(int id) {
         try {
-            Lutemon l = getLutemon(id); l.heal();
+            Lutemon l = getLutemon(id);
+            l.heal();
             sendTo(Home.getInstance(), l);
         } catch (BadIdException e) {
             System.out.println(e.getMessage());
@@ -57,7 +61,7 @@ public abstract class Storage implements Serializable {
     /**
      * @param id lutemon to be sent to TrainingArea
      */
-    public void sendToTrain(int id){
+    public void sendToTrain(int id) {
         try {
             Lutemon l = getLutemon(id);
             sendTo(TrainingArea.getInstance(), l);
@@ -70,7 +74,7 @@ public abstract class Storage implements Serializable {
     /**
      * @param id lutemon to be sent to BattleField
      */
-    public void sendToBattleField(int id){
+    public void sendToBattleField(int id) {
         try {
             Lutemon l = getLutemon(id);
             sendTo(BattleField.getInstance(), l);
@@ -88,32 +92,6 @@ public abstract class Storage implements Serializable {
     }
 
     /**
-     * @param lutemon to add to hashmap
-     */
-    private void addLutemon(Lutemon lutemon){
-        if (lutemon == null){
-            System.out.println("Error: No lutemon to add");
-            return;
-        }
-        lutemons.put(lutemon.getId(), lutemon);
-    }
-
-    /**
-     * @param place to be sent to
-     * @param lutemon to be sent
-     */
-    private void sendTo(Storage place, Lutemon lutemon) {
-        if (lutemon == null || place == null){
-            System.out.println("Error: No lutemon or destination");
-            return;
-        }
-        place.addLutemon(lutemon);
-        this.removeLutemon(lutemon);
-        System.out.println("---------------------------------------\n" + lutemon.getName() + " sent to the " + place.getName());
-        lutemon.select(false);
-    }
-
-    /**
      * @param lutemon to be removed from hashmap
      */
     public void removeLutemon(Lutemon lutemon) {
@@ -123,16 +101,18 @@ public abstract class Storage implements Serializable {
 
     /**
      * Checks if HashMap contains key with "id"
+     * 
      * @param id to be found
      * @return true if found
      */
-    public boolean checkIdExists(int id){
+    public boolean checkIdExists(int id) {
         return lutemons.containsKey(id);
     }
 
-    public void saveLutemon(Context context, String filename){
+    public void saveLutemon(Context context, String filename) {
         try {
-            ObjectOutputStream lutemonWriter = new ObjectOutputStream(context.openFileOutput(filename, Context.MODE_PRIVATE));
+            ObjectOutputStream lutemonWriter = new ObjectOutputStream(
+                    context.openFileOutput(filename, Context.MODE_PRIVATE));
             lutemonWriter.writeObject(lutemons);
             lutemonWriter.close();
             System.out.println("Data saved!");
@@ -142,9 +122,10 @@ public abstract class Storage implements Serializable {
         }
     }
 
-    public void loadLutemon(Context context, String filename){
+    public void loadLutemon(Context context, String filename) {
         try {
             ObjectInputStream lutemonReader = new ObjectInputStream(context.openFileInput(filename));
+            //noinspection unchecked
             lutemons = (HashMap<Integer, Lutemon>) lutemonReader.readObject();
             System.out.println("Data Read!");
             lutemonReader.close();
@@ -154,20 +135,45 @@ public abstract class Storage implements Serializable {
         }
     }
 
-    public int getHighestID(){
+    public int getHighestID() {
         int max = -1;
-        for(int i : lutemons.keySet()){
-            if (i > max) max = i;
+        for (int i : lutemons.keySet()) {
+            if (i > max)
+                max = i;
         }
         return max;
     }
 
-    protected void emptyStorage(){
-        lutemons = new HashMap<>();
-    }
-    public void deselectAll(){
-        for(int i : lutemons.keySet()){
-            lutemons.get(i).select(false);
+    public void deselectAll() {
+        for (int i : lutemons.keySet()) {
+            Objects.requireNonNull(lutemons.get(i)).select(false);
         }
+    }
+
+    /**
+     * @param lutemon to add to hashmap
+     */
+    private void addLutemon(Lutemon lutemon) {
+        if (lutemon == null) {
+            System.out.println("Error: No lutemon to add");
+            return;
+        }
+        lutemons.put(lutemon.getId(), lutemon);
+    }
+
+    /**
+     * @param place   to be sent to
+     * @param lutemon to be sent
+     */
+    private void sendTo(Storage place, Lutemon lutemon) {
+        if (lutemon == null || place == null) {
+            System.out.println("Error: No lutemon or destination");
+            return;
+        }
+        place.addLutemon(lutemon);
+        this.removeLutemon(lutemon);
+        System.out.println(
+                "---------------------------------------\n" + lutemon.getName() + " sent to the " + place.getName());
+        lutemon.select(false);
     }
 }

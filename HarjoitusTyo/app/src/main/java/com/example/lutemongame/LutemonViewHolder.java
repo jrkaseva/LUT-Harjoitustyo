@@ -9,9 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
-    ImageView lutemonImage, lutemonInfo;
-    TextView lutemonName, lutemonColor, lutemonWins, lutemonLosses;
-    CheckBox cb;
+    final ImageView lutemonImage;
+    final ImageView lutemonInfo;
+    final TextView lutemonName;
+    final TextView lutemonColor;
+    final TextView lutemonWins;
+    final TextView lutemonLosses;
+    final CheckBox cb;
 
     public LutemonViewHolder(@NonNull View itemView) {
         super(itemView);

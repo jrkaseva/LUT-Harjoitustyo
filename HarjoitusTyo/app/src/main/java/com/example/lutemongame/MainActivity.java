@@ -17,12 +17,7 @@ import com.example.lutemongame.Game.Areas.BattleField;
 import com.example.lutemongame.Game.Areas.Home;
 import com.example.lutemongame.Game.Areas.Storage;
 import com.example.lutemongame.Game.Areas.TrainingArea;
-import com.example.lutemongame.Game.Creatures.Black;
-import com.example.lutemongame.Game.Creatures.Green;
 import com.example.lutemongame.Game.Creatures.Lutemon;
-import com.example.lutemongame.Game.Creatures.Orange;
-import com.example.lutemongame.Game.Creatures.Pink;
-import com.example.lutemongame.Game.Creatures.White;
 import com.example.lutemongame.Game.Fragments.ArenaFragment;
 import com.example.lutemongame.Game.Fragments.GymFragment;
 import com.example.lutemongame.Game.Fragments.HomeFragment;
@@ -109,18 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.frameMain, new HomeFragment())
                 .commit();
         layoutButtons.setBackgroundResource(R.color.home);
-    }
-
-    public void createTestLutemons(){
-        Home Storage = Home.getInstance();
-        Storage.createLutemon(new Green("Goblin"));
-        Storage.createLutemon(new Orange("Orangutan"));
-        Storage.createLutemon(new White("Walter"));
-        Storage.createLutemon(new Pink("Panther"));
-        Storage.createLutemon(new Black("Betty"));
-        Storage.createLutemon(new Black("Panther"));
-        Storage.createLutemon(new Pink("Flamingo"));
-        Storage.createLutemon(new White("Winter"));
     }
 
     private void loadData(){

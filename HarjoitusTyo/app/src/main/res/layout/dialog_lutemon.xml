@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/dialogLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="300dp"
     android:background="#95CA58"
     android:orientation="vertical"
-    android:padding="20sp">
+    android:padding="20sp"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/dialogImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_lutemon_foreground" />
+        app:srcCompat="@mipmap/ic_lutemon_foreground"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <TextView
         android:id="@+id/dialogTVIdNameColor"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="[id] Name (Colour)" />
+        android:text="[id] Name (Colour)"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:layout_width="200dp"
@@ -35,20 +39,23 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="#7CA84A"
-                android:text="ATK: X" />
+                android:text="ATK: X"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/dialogTVExp"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="EXP: X" />
+                android:text="EXP: X"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/dialogTVWins"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="#7CA84A"
-                android:text="WINS: X" />
+                android:text="WINS: X"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -62,20 +69,23 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="#7CA84A"
-                android:text="DEF: X" />
+                android:text="DEF: X"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/dialogTVHp"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="HP: X/X" />
+                android:text="HP: X/X"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/dialogTVLosses"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="#7CA84A"
-                android:text="LOSSES: X" />
+                android:text="LOSSES: X"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
     </LinearLayout>
@@ -84,6 +94,7 @@
         android:id="@+id/btnDeleteLutemon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete" />
+        android:text="Delete"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

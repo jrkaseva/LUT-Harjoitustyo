@@ -13,13 +13,13 @@
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Creating a new Lutemon"
             android:textAlignment="center"
             android:textSize="34sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,18 +31,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
 
                 <EditText
                     android:id="@+id/idEditLutemonName"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:background="#5CBF60"
                     android:hint="Enter name"
-                    android:minHeight="48dp"/>
+                    android:minHeight="48dp"
+                    tools:ignore="HardcodedText,NestedWeights"
+                    android:autofillHints="" />
 
 
             </LinearLayout>
@@ -54,12 +57,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Choose your Lutemon's color"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
 
                 <RadioButton
                     android:id="@+id/rbWhite"
@@ -67,37 +70,43 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="White"
-                    android:textColorHighlight="#AE3E1B" />
+                    android:textColorHighlight="#AE3E1B"
+                    tools:ignore="HardcodedText" />
 
                 <RadioButton
                     android:id="@+id/rbBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Black" />
+                    android:text="Black"
+                    tools:ignore="HardcodedText" />
 
                 <RadioButton
                     android:id="@+id/rbGreen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Green" />
+                    android:text="Green"
+                    tools:ignore="HardcodedText" />
 
                 <RadioButton
                     android:id="@+id/rbOrange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Orange" />
+                    android:text="Orange"
+                    tools:ignore="HardcodedText" />
 
                 <RadioButton
                     android:id="@+id/rbPink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pink" />
+                    android:text="Pink"
+                    tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_marginStart="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:text="Lutemons existing:">
+                    android:text="Lutemons existing:"
+                    tools:ignore="HardcodedText">
                 </TextView>
 
                 <TextView
@@ -107,7 +116,8 @@
                     android:textSize="20sp"
                     android:textAlignment="textEnd"
                     android:paddingEnd="40dp"
-                    android:text="X/X">
+                    android:text="X/X"
+                    tools:ignore="HardcodedText,RtlSymmetry">
                 </TextView>
 
             </RadioGroup>
@@ -120,7 +130,9 @@
             android:layout_weight="1"
             android:minHeight="32dp"
             android:text="Create Lutemon"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText" />
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="match_parent"
@@ -128,7 +140,9 @@
             android:layout_weight="1"
             android:minHeight="32dp"
             android:text="Back"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

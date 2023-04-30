@@ -1,37 +1,15 @@
 package com.example.lutemongame.Game.Creatures;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 
 import com.example.lutemongame.R;
 
 import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
 
 public class Lutemon implements Serializable {
     private static int idCounter = 0;
-// --Commented out by Inspection START (18.4.2023 12.20):
-//    /**
-//     * Was included in class diagram, has no use as of now. Same function as method getNumberOfCreatedLutemons()
-//     * @return latest ID created
-//     */
-//    public static int getIdCounter() {return idCounter;}
-// --Commented out by Inspection STOP (18.4.2023 12.20)
 
-    /**
-     * @return amount of Lutemons created, AKA highest ID
-     */
-    public static int getNumberOfCreatedLutemons(){
-        return idCounter;
-    }
-    public static void main(String[] args){
-        Lutemon snow = new White("Snow");
-        Lutemon coal = new Black("Coal");
-        System.out.println(snow);
-        System.out.println(coal);
-    }
     protected int image;
     protected int atk;
     protected int def;
@@ -45,7 +23,7 @@ public class Lutemon implements Serializable {
     protected int wins = 0;
     protected int losses = 0;
 
-    protected String name;
+    protected final String name;
 
     protected String color;
     protected boolean selected = false;
@@ -71,16 +49,14 @@ public class Lutemon implements Serializable {
             atk = 3;
             def = 3;
             health = 12; maxHealth = 12;
-            color = "Black";
-            image = R.mipmap.ic_lutemon_brown_foreground;
         }
         else {
             atk = 10;
             def = 3;
             health = 20; maxHealth = 20;
-            color = "Black";
-            image = R.mipmap.ic_lutemon_brown_foreground;
         }
+        color = "Black";
+        image = R.mipmap.ic_lutemon_brown_foreground;
     }
 
     /**
@@ -93,14 +69,12 @@ public class Lutemon implements Serializable {
     /**
      * @return total power of Lutemon's attack
      */
-    public int attack(boolean skip_battle){
+    public int attack(){
         int randomness = (int)(((Math.random() * 100) % 5) - ((Math.random() * 100) % 5));
-        if(!skip_battle){
-            if (randomness < -1) System.out.println(getName() + " isn't focusing");
-            else if (randomness <= 1) System.out.println(getName() + " is focused in battle");
-            else if (randomness < 4) System.out.println(getName() + " is finding weak spots from the opponent");
-            else System.out.println(getName() + " has been possessed by a warrior! Great attack incoming");
-        }
+        if (randomness < -1) System.out.println(getName() + " isn't focusing");
+        else if (randomness <= 1) System.out.println(getName() + " is focused in battle");
+        else if (randomness < 4) System.out.println(getName() + " is finding weak spots from the opponent");
+        else System.out.println(getName() + " has been possessed by a warrior! Great attack incoming");
         return atk + randomness;
     }
 
@@ -114,24 +88,12 @@ public class Lutemon implements Serializable {
     /**
      * @param attacker which attacks this Lutemon
      */
-    public void defense(Lutemon attacker, boolean skip_battle){
-        int damage = attacker.attack(skip_battle);
-        if (!skip_battle) System.out.printf("%s(%s) attacks %s(%s) [POWER: %d]%n",
-         attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage);
-        if(damage > def) health -= (damage - def);
-    }
+    @SuppressLint("DefaultLocale")
     public String defense(Lutemon attacker){
-        int damage = attacker.attack(false);
+        int damage = attacker.attack();
         System.out.printf("%s(%s) attacks %s(%s) [POWER: %d]%n",
                 attacker.getColor(), attacker.getName(), this.getColor(), this.getName(), damage);
         if(damage > def) health -= (damage - def);
-        /*try {
-            Thread.sleep(1000);
-            System.out.println("Thread Sleep");
-        } catch (InterruptedException e) {
-            System.out.println("Thread error");
-            throw new RuntimeException(e);
-        }*/
         return String.format("%s (%d) | %s (%d/%d)", attacker.name, damage, name, health, maxHealth);
     }
 
@@ -145,7 +107,7 @@ public class Lutemon implements Serializable {
         atk = atk - experience;
     }
     public void resetDef(){
-        def = def - experience;;
+        def = def - experience;
     }
     /**
      * @param i added to existing experience points
@@ -268,14 +230,6 @@ public class Lutemon implements Serializable {
      */
     public String getColor() {
         return color;
-    }
-
-    /**
-     * Getter for color and name
-     * @return color(name)
-     */
-    public String getColorName(){
-        return color + "(" + name + ")";
     }
 
     /**

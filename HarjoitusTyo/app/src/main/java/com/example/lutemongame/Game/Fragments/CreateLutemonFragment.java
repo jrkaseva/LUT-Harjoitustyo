@@ -37,6 +37,7 @@ public class CreateLutemonFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,8 +53,8 @@ public class CreateLutemonFragment extends Fragment {
         return view;
     }
 
-    @SuppressLint("NonConstantResourceId")
-    public void createLutemon(){
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
+    private void createLutemon(){
         if (amountOfLutemons() >= MAX_LUTEMONS){
             Toast toast = Toast.makeText(getContext(), "Max amount of Lutemons created", Toast.LENGTH_SHORT);
             toast.show();
@@ -89,14 +90,14 @@ public class CreateLutemonFragment extends Fragment {
 
         Home.getInstance().createLutemon(lutemon);
 
-        ((MainActivity)getActivity()).saveData();
+        ((MainActivity) requireActivity()).saveData();
 
         lutemon_name.setText("");
         Toast toast = Toast.makeText(getContext(), "Lutemon created", Toast.LENGTH_SHORT);
         toast.show();
         lutemon_count.setText(amountOfLutemons() + "/" + MAX_LUTEMONS);
     }
-    public int amountOfLutemons() {
+    private int amountOfLutemons() {
         return Home.getInstance().getLutemons().size() + TrainingArea.getInstance().getLutemons().size() + BattleField.getInstance().getLutemons().size();
     }
 }

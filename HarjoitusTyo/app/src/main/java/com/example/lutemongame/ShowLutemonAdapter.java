@@ -76,9 +76,9 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         Button delete = dialog.findViewById(R.id.btnDeleteLutemon);
 
         Lutemon temp = lutemons.get(id_list.get(pos));
-        // animation.setFavoriteAnimation(v.getContext(),temp);
+        animation.setFavoriteAnimation(v.getContext(), Objects.requireNonNull(temp));
         delete.setOnClickListener(view -> {
-            ((MainActivity)context).removeLutemon(temp.getId());
+            ((MainActivity)context).removeLutemon(Objects.requireNonNull(temp).getId());
             id_list.remove(pos);
             notifyItemRemoved(pos);
             ((MainActivity)context).saveData();
@@ -90,7 +90,7 @@ public class ShowLutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
 
 
         lutemonImage.setImageResource(Objects.requireNonNull(temp).getImage());
-        // lutemonImage.startAnimation(animation.getFavoriteAnimation());
+        lutemonImage.startAnimation(animation.getFavoriteAnimation());
         idNameColor.setText(temp.getIdNameColor());
         atk.setText("ATK: " + temp.getAtk());
         def.setText("DEF: " + temp.getDef());

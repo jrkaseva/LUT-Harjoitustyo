@@ -17,13 +17,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="YOU ARE NOW IN THE ARENA"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +36,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#552"
-                android:text="BATTLE WITH LUTEMONS" />
+                android:textColor="@color/white"
+                android:text="BATTLE WITH LUTEMONS"
+                tools:ignore="HardcodedText"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btnArenaTransferLutemons"
@@ -44,15 +47,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#552"
-                android:onClick="sendTo"
-                android:text="TRANSFER LUTEMONS" />
+                android:textColor="@color/white"
+                android:text="TRANSFER LUTEMONS"
+                tools:ignore="HardcodedText"
+                style="?android:attr/buttonBarButtonStyle" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SELECT WHERE TO SEND LUTEMONS:" />
+            android:text="SELECT WHERE TO SEND LUTEMONS:"
+            tools:ignore="HardcodedText" />
 
         <RadioGroup
             android:id="@+id/rgSendFromArena"
@@ -65,20 +70,22 @@
                 android:id="@+id/rbSendHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home" />
+                android:text="Home"
+                tools:ignore="HardcodedText" />
 
             <RadioButton
                 android:id="@+id/rbSendGym"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gym" />
+                android:text="Gym"
+                tools:ignore="HardcodedText" />
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SELECT WHICH LUTEMONS YOU WANT TO TRANSFER:" />
+            android:text="SELECT WHICH LUTEMONS YOU WANT TO TRANSFER:"
+            tools:ignore="HardcodedText" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRVArena"

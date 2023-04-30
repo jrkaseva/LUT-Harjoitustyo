@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/textViewInfo"
-android:layout_width="wrap_content"
+    android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:orientation="vertical"
-android:background="#57ccaa">
+android:background="#57ccaa"
+    tools:ignore="Overdraw">
 
 <Button
     android:id="@+id/btnExitTraining"
@@ -29,7 +29,7 @@ android:background="#57ccaa">
         android:id="@+id/imageViewAttackerTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="50sp"
+        android:layout_marginEnd="50sp"
         android:contentDescription="@string/attacker_image"
         app:srcCompat="@mipmap/ic_lutemon_pink_foreground" />
 
@@ -46,25 +46,28 @@ android:background="#57ccaa">
 
 
     <Button
-    android:id="@+id/btnRoundTraining"
-    android:backgroundTint="#000"
-    android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Attack" />
+        android:id="@+id/btnRoundTraining"
+        android:backgroundTint="#000"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attack"
+        tools:ignore="HardcodedText" />
 
-<TextView
-    android:id="@+id/textViewWinnerTraining"
-    android:layout_width="match_parent"
-    android:layout_height="44dp"
-    android:textAlignment="center" />
+    <TextView
+        android:id="@+id/textViewWinnerTraining"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textAlignment="center" />
 
-<TextView
-    android:id="@+id/textViewFightTraining"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:text="ATTACKER (ATK) | DEFENDER (HP)\n----------------------------------------------------------"
-    android:textAlignment="center" />
+    <TextView
+        android:id="@+id/textViewFightTraining"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:text="ATTACKER (ATK) | DEFENDER (HP)\n----------------------------------------------------------"
+        android:textAlignment="center"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

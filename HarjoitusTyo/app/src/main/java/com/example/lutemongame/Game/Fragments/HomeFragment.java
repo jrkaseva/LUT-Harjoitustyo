@@ -1,6 +1,5 @@
 package com.example.lutemongame.Game.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +39,7 @@ public class HomeFragment extends Fragment {
         rv = view.findViewById(R.id.idRVHome);
         rg = view.findViewById(R.id.rgSendFromHome);
         Button transfer = view.findViewById(R.id.btnHomeTransferLutemons);
-        transfer.setOnClickListener(v -> ((MainActivity)getActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
+        transfer.setOnClickListener(v -> ((MainActivity) requireActivity()).sendTo(rg, STORAGE, rv, getCheckedLutemons()));
         Button createLutemon = view.findViewById(R.id.btnTrainLutemon);
         createLutemon.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameMain, new CreateLutemonFragment())
@@ -49,11 +48,6 @@ public class HomeFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new ShowLutemonAdapter(getActivity(), STORAGE.getLutemons()));
         return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     public ArrayList<Integer> getCheckedLutemons(){

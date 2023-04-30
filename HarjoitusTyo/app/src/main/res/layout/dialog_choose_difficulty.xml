@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/chooseDifficultyDialog"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#57ccaa"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="Overdraw">
 
     <RadioGroup
         android:id="@+id/rgChooseDifficulty"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
         <TextView
-            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:text="Choose difficulty"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
             android:id="@+id/rbEasy"
@@ -29,7 +30,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="Easy"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
             android:id="@+id/rbHard"
@@ -37,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="Hard" />
+            android:text="Hard"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/btnConfirmDifficulty"
@@ -46,7 +49,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Confirm" />
+            android:text="Confirm"
+            tools:ignore="HardcodedText" />
     </RadioGroup>
 
 
