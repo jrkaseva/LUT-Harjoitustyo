@@ -1,5 +1,16 @@
+Tekijät:
+Joakim Kaseva (001107355)
+Juho Kettunen (0541135)
+Kimmo Kulmala (001094918)
+
 Esittelyvideo
 https://youtu.be/6mPYv6ULfhY
 
 Repo:
 https://github.com/jrkaseva/LUT-Harjoitustyo
+
+Tarkemmin dokumentaatio:
+https://github.com/jrkaseva/LUT-Harjoitustyo/tree/main/HarjoitusTyo/palautus
+
+Tarkemmin lähdekoodi:
+https://github.com/jrkaseva/LUT-Harjoitustyo/tree/main/HarjoitusTyo/app/src/main/java/com/example/lutemongame

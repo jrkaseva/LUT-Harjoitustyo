@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>434</x>
-      <y>259</y>
+      <x>336</x>
+      <y>252</y>
       <w>224</w>
       <h>217</h>
     </coordinates>
@@ -35,8 +35,8 @@ _- serialVersionUID: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>511</y>
+      <x>392</x>
+      <y>504</y>
       <w>147</w>
       <h>63</h>
     </coordinates>
@@ -51,8 +51,8 @@ _+ getInstance(): Home_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>588</y>
+      <x>392</x>
+      <y>581</y>
       <w>147</w>
       <h>49</h>
     </coordinates>
@@ -66,8 +66,8 @@ _+ getInstance(): BattleField_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>672</y>
+      <x>392</x>
+      <y>665</y>
       <w>147</w>
       <h>49</h>
     </coordinates>
@@ -81,8 +81,8 @@ _+ getInstance(): TrainingArea_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>455</x>
-      <y>469</y>
+      <x>357</x>
+      <y>462</y>
       <w>49</w>
       <h>252</h>
     </coordinates>
@@ -92,8 +92,8 @@ _+ getInstance(): TrainingArea_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>616</y>
+      <x>56</x>
+      <y>609</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -105,8 +105,8 @@ _+ getInstance(): TrainingArea_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>189</y>
+      <x>56</x>
+      <y>182</y>
       <w>217</w>
       <h>308</h>
     </coordinates>
@@ -143,8 +143,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>658</y>
+      <x>56</x>
+      <y>651</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -156,8 +156,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>574</y>
+      <x>56</x>
+      <y>567</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -169,8 +169,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>742</y>
+      <x>56</x>
+      <y>735</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -182,8 +182,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>700</y>
+      <x>56</x>
+      <y>693</y>
       <w>119</w>
       <h>35</h>
     </coordinates>
@@ -195,8 +195,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>490</y>
+      <x>168</x>
+      <y>483</y>
       <w>84</w>
       <h>287</h>
     </coordinates>
@@ -206,8 +206,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>714</y>
+      <x>168</x>
+      <y>707</y>
       <w>84</w>
       <h>21</h>
     </coordinates>
@@ -217,8 +217,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>672</y>
+      <x>168</x>
+      <y>665</y>
       <w>84</w>
       <h>21</h>
     </coordinates>
@@ -228,8 +228,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>623</y>
+      <x>168</x>
+      <y>616</y>
       <w>84</w>
       <h>21</h>
     </coordinates>
@@ -239,8 +239,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>588</y>
+      <x>168</x>
+      <y>581</y>
       <w>84</w>
       <h>21</h>
     </coordinates>
@@ -250,8 +250,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>455</x>
-      <y>623</y>
+      <x>357</x>
+      <y>616</y>
       <w>49</w>
       <h>21</h>
     </coordinates>
@@ -261,8 +261,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>455</x>
-      <y>539</y>
+      <x>357</x>
+      <y>532</y>
       <w>49</w>
       <h>21</h>
     </coordinates>
@@ -272,8 +272,8 @@ _&lt;&lt;set&gt;&gt; - idCounter: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>364</x>
-      <y>385</y>
+      <x>266</x>
+      <y>378</y>
       <w>84</w>
       <h>28</h>
     </coordinates>
@@ -285,8 +285,8 @@ m2=0..10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1092</x>
-      <y>455</y>
+      <x>994</x>
+      <y>448</y>
       <w>280</w>
       <h>119</h>
     </coordinates>
@@ -306,8 +306,8 @@ m2=0..10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>763</x>
-      <y>665</y>
+      <x>665</x>
+      <y>658</y>
       <w>259</w>
       <h>98</h>
     </coordinates>
@@ -326,8 +326,8 @@ m2=0..10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>763</x>
-      <y>490</y>
+      <x>665</x>
+      <y>483</y>
       <w>259</w>
       <h>161</h>
     </coordinates>
@@ -351,8 +351,8 @@ ImageView, ImageView, TextView): boolean</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>763</x>
-      <y>259</y>
+      <x>665</x>
+      <y>252</y>
       <w>259</w>
       <h>210</h>
     </coordinates>
@@ -381,8 +381,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>763</x>
-      <y>119</y>
+      <x>665</x>
+      <y>112</y>
       <w>259</w>
       <h>126</h>
     </coordinates>
@@ -404,8 +404,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1015</x>
-      <y>196</y>
+      <x>917</x>
+      <y>189</y>
       <w>98</w>
       <h>63</h>
     </coordinates>
@@ -415,8 +415,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1015</x>
-      <y>441</y>
+      <x>917</x>
+      <y>434</y>
       <w>63</w>
       <h>21</h>
     </coordinates>
@@ -426,8 +426,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1015</x>
-      <y>238</y>
+      <x>917</x>
+      <y>231</y>
       <w>63</w>
       <h>525</h>
     </coordinates>
@@ -437,8 +437,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>441</y>
+      <x>532</x>
+      <y>434</y>
       <w>147</w>
       <h>112</h>
     </coordinates>
@@ -448,8 +448,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>686</y>
+      <x>532</x>
+      <y>679</y>
       <w>147</w>
       <h>70</h>
     </coordinates>
@@ -459,8 +459,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>602</y>
+      <x>532</x>
+      <y>595</y>
       <w>147</w>
       <h>21</h>
     </coordinates>
@@ -470,8 +470,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>434</x>
-      <y>210</y>
+      <x>336</x>
+      <y>203</y>
       <w>133</w>
       <h>28</h>
     </coordinates>
@@ -483,8 +483,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>98</x>
-      <y>98</y>
+      <x>0</x>
+      <y>91</y>
       <w>588</w>
       <h>735</h>
     </coordinates>
@@ -494,8 +494,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>749</x>
-      <y>98</y>
+      <x>651</x>
+      <y>91</y>
       <w>658</w>
       <h>735</h>
     </coordinates>
@@ -505,8 +505,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1015</x>
-      <y>574</y>
+      <x>917</x>
+      <y>567</y>
       <w>63</w>
       <h>21</h>
     </coordinates>
@@ -516,8 +516,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1099</x>
-      <y>140</y>
+      <x>1001</x>
+      <y>133</y>
       <w>231</w>
       <h>196</h>
     </coordinates>
@@ -544,8 +544,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1092</x>
-      <y>609</y>
+      <x>994</x>
+      <y>602</y>
       <w>280</w>
       <h>119</h>
     </coordinates>
@@ -565,8 +565,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1225</x>
-      <y>567</y>
+      <x>1127</x>
+      <y>560</y>
       <w>21</w>
       <h>56</h>
     </coordinates>
@@ -576,8 +576,8 @@ ImageView, ImageView, TextView): boolean
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1239</x>
-      <y>413</y>
+      <x>1141</x>
+      <y>406</y>
       <w>133</w>
       <h>35</h>
     </coordinates>
@@ -588,8 +588,8 @@ RecyclerView-object.</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>462</x>
-      <y>140</y>
+      <x>364</x>
+      <y>133</y>
       <w>133</w>
       <h>63</h>
     </coordinates>
